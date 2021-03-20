@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:home_resident/pages/reto/pregunta/quiz.dart';
 import 'package:home_resident/widget/bottom_menu.dart';
 import 'package:home_resident/widget/my_page_view.dart';
 import 'home_page_tabs/ajuste_tab.dart';
@@ -46,7 +47,8 @@ class _HomePageState extends State<HomePage> {
           IconButton(icon: Icon(Icons.send),
               onPressed: (){
                 //final route = MaterialPageRoute(builder: (BuildContext _)=>ChatPage(name: "Matias Casco",));
-                //Navigator.push(context, route);
+                final route = MaterialPageRoute(builder: (BuildContext _)=>Quiz());
+                Navigator.push(context, route);
               }),
           IconButton(icon: Icon(Icons.more_vert), onPressed: (){
             //Navigator.pushNamed(context, PostPage2.routeName);
