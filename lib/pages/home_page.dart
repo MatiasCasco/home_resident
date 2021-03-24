@@ -7,9 +7,10 @@ import 'home_page_tabs/ajuste_tab.dart';
 import 'home_page_tabs/historial_tab.dart';
 import 'home_page_tabs/menu_tab.dart';
 import 'home_page_tabs/user_tab.dart';
+import 'reto/puntaje/score.dart';
 
 class HomePage extends StatefulWidget {
-  static final routeName = "homePaee";
+  static final routeName = "homePage";
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -47,7 +48,8 @@ class _HomePageState extends State<HomePage> {
           IconButton(icon: Icon(Icons.send),
               onPressed: (){
                 //final route = MaterialPageRoute(builder: (BuildContext _)=>ChatPage(name: "Matias Casco",));
-                final route = MaterialPageRoute(builder: (BuildContext _)=>Quiz());
+                //final route = MaterialPageRoute(builder: (BuildContext _)=>Quiz());
+                final route = MaterialPageRoute(builder: (BuildContext _)=>Score());
                 Navigator.push(context, route);
               }),
           IconButton(icon: Icon(Icons.more_vert), onPressed: (){

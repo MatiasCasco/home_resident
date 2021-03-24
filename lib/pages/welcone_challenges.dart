@@ -1,6 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:home_resident/pages/reto/pregunta/quiz.dart';
 import 'package:home_resident/utils/constants.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
@@ -30,7 +32,12 @@ class WelcomeChallenges extends StatelessWidget {
                     Text("Bienvenidos al juego de Retos!!", style: TextStyle(color: Colors.blue, fontSize: 20.0),),
                     Spacer(),
                     InkWell(
-                      onTap: (){},
+                      /*onTap: (){
+                        final route = MaterialPageRoute(builder: (BuildContext _)=>Quiz());
+                        // final route = MaterialPageRoute(builder: (BuildContext _)=>Score());
+                        Navigator.push(context, route);
+                      },*/
+                      onTap: () => Get.to(Quiz()),
                       child: Container(
                         width: double.infinity,
                         alignment: Alignment.center,

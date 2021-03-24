@@ -24,30 +24,34 @@ class Body extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                 child: ProgressBar(),
               ),
               SizedBox(
                 height: kDefaultPadding,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                child: Text.rich(
-                  TextSpan(
-                    text: "Pregunta 1",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline4
-                        .copyWith(color: kSecondaryColor),
-                    children: [
-                      TextSpan(
-                        text: "/10",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline5
-                            .copyWith(color: kSecondaryColor),
-                      ),
-                    ],
+                padding:
+                    const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                child: Obx(
+                  () => Text.rich(
+                    TextSpan(
+                      text: "Pregunta ${_questionController.questionNumber.value}",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline4
+                          .copyWith(color: kSecondaryColor),
+                      children: [
+                        TextSpan(
+                          text: "/${_questionController.questions.length}",
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline5
+                              .copyWith(color: kSecondaryColor),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -60,9 +64,15 @@ class Body extends StatelessWidget {
               ),
               Expanded(
                 child: PageView.builder(
+                  // Deslizar bloque a la siguiente qn
+                  physics: NeverScrollableScrollPhysics(),
+                  controller: _questionController.pageController,
+                  onPageChanged: _questionController.updateTheQnNum,
                   itemCount: _questionController.questions.length,
-                  itemBuilder: (context, index)=>QuestionCard(question: _questionController.questions[index]),
-              ),),
+                  itemBuilder: (context, index) => QuestionCard(
+                      question: _questionController.questions[index]),
+                ),
+              ),
               SizedBox(
                 height: kDefaultPadding * 2,
               ),

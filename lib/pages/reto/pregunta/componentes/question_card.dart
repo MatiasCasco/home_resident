@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:home_resident/controllers/questions_controller.dart';
 import 'package:home_resident/models/question_model.dart';
 import 'package:home_resident/utils/constants.dart';
 
@@ -7,6 +9,7 @@ import 'option.dart';
 
 class QuestionCard extends StatelessWidget {
   final Question question;
+
   // estamos pasando como parametro el objeto pregunta
   const QuestionCard({
     Key key,@required this.question,
@@ -14,6 +17,7 @@ class QuestionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    QuestionsController _controller = Get.put(QuestionsController());
     return Container(
       margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
       padding: EdgeInsets.all(kDefaultPadding),
@@ -31,10 +35,14 @@ class QuestionCard extends StatelessWidget {
                 .copyWith(color: kBlackColor,),
           ),
           SizedBox(height: kDefaultPadding,),
-          Option(),
-          Option(),
-          Option(),
-          Option(),
+          ...List.generate(
+              question.options.length,
+                  (index) => Option(
+                    index: index,
+                    text: question.options[index],
+                    press: ()=>_controller.checkAns(question, index),
+                  ),
+          ),
         ],
       ),
     );
