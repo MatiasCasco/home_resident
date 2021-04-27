@@ -19,7 +19,7 @@ class _SplashPageState extends State<SplashPage> with AfterLayoutMixin {
 
   @override
   void afterFirstLayout(BuildContext context) {
-    Future.delayed(Duration(seconds: 2)).then((_){
+    Future.delayed(Duration(seconds: 3)).then((_){
       this._checkLogin();
     });
   }
@@ -39,6 +39,4 @@ class _SplashPageState extends State<SplashPage> with AfterLayoutMixin {
   Widget build(BuildContext context) {
     return Scaffold(body: Center(child: CupertinoActivityIndicator(radius: 15,),),);
   }
-
-
 }

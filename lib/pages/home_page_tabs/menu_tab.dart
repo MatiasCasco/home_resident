@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:home_resident/pages/reto/pregunta/quiz.dart';
-
 import '../welcone_challenges.dart';
 
 class MenuTab extends StatefulWidget {

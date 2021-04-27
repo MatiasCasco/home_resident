@@ -9,12 +9,14 @@ class Score extends StatelessWidget {
   //static final routeName = "score";
   @override
   Widget build(BuildContext context) {
-    QuestionsController _qnController = Get.put(QuestionsController());
+    //QuestionsController _qnController = Get.put(QuestionsController());
+    QuestionsController _qnController = Get.find();
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
         children: [
-          WebsafeSvg.asset("assets/icons/bg.svg", fit: BoxFit.fill),
+          // WebsafeSvg.asset("assets/icons/bg.svg", fit: BoxFit.fill),
+          Image.asset("assets/icons/fondo.png", fit: BoxFit.fill, width: double.maxFinite,),
           Column(
             children: [
               Spacer(flex: 3,),
@@ -27,7 +29,8 @@ class Score extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                "${_qnController.correctAns * 10}/${_qnController.questions.length * 10}",
+                "${_qnController.numOfCorrectAns * 10}/${_qnController.questions.length * 10}",
+                //"${_qnController.correctAns * 10}/${_qnController.questions.length * 10}",
                 style: Theme.of(context)
                 .textTheme
                 .headline4

@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class HistorialTab extends StatefulWidget {
@@ -12,4 +13,6 @@ class _HistorialTabState extends State<HistorialTab> {
     print("historial");
     return Center(child: Text("historial"),);
   }
+
+
 }

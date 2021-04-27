@@ -1,23 +1,64 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:home_resident/api/reto_api.dart';
+import 'package:home_resident/controllers/questions_controller.dart';
+import 'package:home_resident/models/question_model.dart';
+import 'package:home_resident/models/recover_questions_list.dart';
 import 'package:home_resident/pages/reto/pregunta/quiz.dart';
+import 'package:home_resident/pages/splash_page_get.dart';
 import 'package:home_resident/utils/constants.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
-class WelcomeChallenges extends StatelessWidget {
+class WelcomeChallenges extends StatefulWidget {
   double size;
-
 
   WelcomeChallenges({this.size});
 
   @override
+  _WelcomeChallengesState createState() => _WelcomeChallengesState();
+}
+
+class _WelcomeChallengesState extends State<WelcomeChallenges> {
+
+  //List<Question> _questions;
+  //RetoAPI _retoAPI = RetoAPI();
+ /*
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+*/
+  /*
+  Future<void> load() async {
+    print("Carga");
+    print("Ejecutando vista");
+    final _reto = await _retoAPI.getReto("6", "4", "matematica");
+    print("Ejecutando vista");
+    _questions = _reto
+        .map(
+          (question) => Question(
+          id: question['id'],
+          question: question['question'],
+          image: question['image'],
+          options: question['options'].cast<String>(),
+          answer: question['answer']),
+    ).toList();
+    //print(_questions);
+    //this._loading = false;
+    //update();
+    return _questions;
+  }
+  */
+  @override
   Widget build(BuildContext context) {
+    RecoverQuestionsList recover = Get.put(RecoverQuestionsList());
     return Scaffold(
       body: Stack(
         children: [
-          WebsafeSvg.asset("assets/icons/bg.svg", fit: BoxFit.fill),
+          //WebsafeSvg.asset("assets/icons/bg.svg", fit: BoxFit.fill),
+          Image.asset("assets/icons/fondo.png", fit: BoxFit.fill, width: double.maxFinite,),
           SafeArea(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -37,7 +78,17 @@ class WelcomeChallenges extends StatelessWidget {
                         // final route = MaterialPageRoute(builder: (BuildContext _)=>Score());
                         Navigator.push(context, route);
                       },*/
-                      onTap: () => Get.to(Quiz()),
+                      onTap: () {
+
+                        recover.load();
+                        Get.to(SplashPageGet());
+                        //Get.to(Quiz());
+                        /*
+                        load();
+                        Get.to(Quiz(),arguments: _questions);
+                         */
+                        //Get.to(Quiz(), duration: Duration(seconds: 3));
+                      },
                       child: Container(
                         width: double.infinity,
                         alignment: Alignment.center,
@@ -59,6 +110,4 @@ class WelcomeChallenges extends StatelessWidget {
       ),
     );
   }
-
-
 }
