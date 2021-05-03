@@ -2,15 +2,17 @@ import 'package:get/get.dart';
 import 'package:home_resident/api/reto_api.dart';
 import 'package:home_resident/models/question_model.dart';
 
+import 'materia_model.dart';
+
 class RecoverQuestionsList {
   List<Question> _questions = [];
   RetoAPI _retoAPI = RetoAPI();
   List<Question> get questions => this._questions;
 
 
-  Future<void> load() async {
+  Future<void> load(String materia) async {
     print("Carga de list<Question>");
-    final _reto = await _retoAPI.getReto("6", "4", "matematica");
+    final _reto = await _retoAPI.getReto("6", "4", materia,"PrimeroTT");
     _questions = _reto
         .map(
           (question) => Question(
@@ -24,5 +26,23 @@ class RecoverQuestionsList {
     //this._loading = false;
 
   }
+  /********************************************************************************/
+  List<Materia> _materias = [];
+  List<Materia> get materias => this._materias;
 
+  Future<void> loadMateria() async {
+    print("Carga de list<Materia>");
+    final _mat = await _retoAPI.getMateriasReto("PrimeroTT");
+    _materias = _mat
+        .map(
+          (materia) => Materia(
+          idMateria: materia['idMateria'],
+          nameMateria: materia['nombre'],
+          idCurso: materia['idCurso'],
+          nameCurso: materia['nombreCurso']),
+    ).toList();
+    print(_materias);
+    //this._loading = false;
+
+  }
 }

@@ -11,7 +11,9 @@ class SplashPageGet extends StatelessWidget {
         init: SplashController(),
         builder: (_)=>Scaffold(
           body: Center(
-            child: CircularProgressIndicator(),
+            //child: CupertinoActivityIndicator(radius: 15,),
+            child: LinearProgressIndicator(),
+            //child: CircularProgressIndicator(),
         ) ,
     ));
   }

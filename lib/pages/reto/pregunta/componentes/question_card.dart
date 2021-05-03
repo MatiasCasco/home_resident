@@ -43,7 +43,7 @@ class QuestionCard extends StatelessWidget {
               children: [
                 ImageQuestion(image: question.image),
                 Text(
-                  question.question,
+                  question.question.replaceAll("\"", ""),
                   style: Theme.of(context)
                       .textTheme
                       .headline6
@@ -54,7 +54,7 @@ class QuestionCard extends StatelessWidget {
                   question.options.length,
                       (index) => Option(
                     index: index,
-                    text: question.options[index],
+                    text: question.options[index].replaceAll("\"", ""),
                     press: ()=>_controller.checkAns(question, index),
                   ),
                 ),
