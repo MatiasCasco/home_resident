@@ -15,7 +15,7 @@ class SplashController extends GetxController {
       });
     }
     if(argument == "ChooseMatter") {
-      Future.delayed(Duration(seconds: 2),(){
+      Future.delayed(Duration(seconds: 3),(){
         Get.off(ChosseMatter());
       });
     }
