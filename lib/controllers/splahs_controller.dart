@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:home_resident/pages/choose_matter.dart';
+import 'package:home_resident/pages/cuestionario/cuestionary.dart';
 import 'package:home_resident/pages/reto/pregunta/quiz.dart';
 
 
@@ -17,6 +18,11 @@ class SplashController extends GetxController {
     if(argument == "ChooseMatter") {
       Future.delayed(Duration(seconds: 3),(){
         Get.off(ChosseMatter());
+      });
+    }
+    if(argument == "Cuestionary") {
+      Future.delayed(Duration(seconds: 3),(){
+        Get.off(Cuestionary());
       });
     }
   }

@@ -23,71 +23,88 @@ class BodyCuestionary extends StatelessWidget {
     // So that we have acccess our controller
     //QuestionController _questionController = Get.put(QuestionController());
     CuestionaryController _cuestionaryController = Get.put(CuestionaryController());
-    return Stack(
-      children: [
-        Image.asset("assets/icons/fondo.png", fit: BoxFit.fill, width: double.maxFinite,),
-        SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              /*Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                child: ProgressBarC(),
-              ),*/
-              SizedBox(height: kDefaultPadding),
-              Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                child: Obx(
-                      () => Text.rich(
-                    TextSpan(
-                      text:
-                      "Question ${_cuestionaryController.questionNumber.value}",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline4
-                          .copyWith(color: kSecondaryColor),
-                      children: [
+    return GetBuilder<CuestionaryController>(
+      init: _cuestionaryController,
+      builder: (_) => Stack(
+          children: [
+            Image.asset("assets/icons/fondo.png", fit: BoxFit.fill, width: double.maxFinite,),
+            SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  /*Padding(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                    child: ProgressBarC(),
+                  ),*/
+                  SizedBox(height: kDefaultPadding),
+                  Obx(
+                      ()=> Text.rich(TextSpan(
+                        text: "Score: ${_cuestionaryController.questions[(_cuestionaryController.questionNumber.value-1)].score}/${_cuestionaryController.questions[(_cuestionaryController.questionNumber.value-1)].assignedScore}",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline4
+                            .copyWith(color: kSecondaryColor),
+                      )),
+                  ),
+                  /*Text(
+                    //${_cuestionaryController.questions[(_cuestionaryController.questionNumber.value-1)].score}
+                    "Score: ${_cuestionaryController.questionNumber}/${_cuestionaryController.puntos}"
+                  ),*/
+                  SizedBox(height: kDefaultPadding),
+                  Padding(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                    child: Obx(
+                          () => Text.rich(
                         TextSpan(
-                          text: "/${_cuestionaryController.questions.length}",
+                          text:
+                          "Question ${_cuestionaryController.questionNumber.value}",
                           style: Theme.of(context)
                               .textTheme
-                              .headline5
+                              .headline4
                               .copyWith(color: kSecondaryColor),
+                          children: [
+                            TextSpan(
+                              text: "/${_cuestionaryController.questions.length}",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline5
+                                  .copyWith(color: kSecondaryColor),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Divider(thickness: 1.5),
-              SizedBox(height: kDefaultPadding),
-              Expanded(
-                child: PageView.builder(
-                  // Block swipe to next qn
-                  //physics: NeverScrollableScrollPhysics(),
-                  allowImplicitScrolling: true,
-                  onPageChanged: _cuestionaryController.updateTheQnNum,
-                  itemCount: _cuestionaryController.questions.length,
-                  /*itemBuilder: (context, index) => CuestionaryCard(
-                      question: _cuestionaryController.questions[index]),*/
+                  Divider(thickness: 1.5),
+                  SizedBox(height: kDefaultPadding),
+                  Expanded(
+                    child: PageView.builder(
+                      // Block swipe to next qn
+                      //physics: NeverScrollableScrollPhysics(),
+                      allowImplicitScrolling: true,
+                      onPageChanged: _cuestionaryController.updateTheQnNum,
+                      itemCount: _cuestionaryController.questions.length,
+                      /*itemBuilder: (context, index) => CuestionaryCard(
+                          question: _cuestionaryController.questions[index]),*/
 
-                  itemBuilder: (context, index) {
-                    //_cuestionaryController.carga();
-                    _cuestionaryController.nextQuestion();
-                    return CuestionaryCard(
-                        question: _cuestionaryController.questions[index],
-                        page: index,
-                    );
+                      itemBuilder: (context, index) {
+                        //_cuestionaryController.carga();
+                        _cuestionaryController.nextQuestion();
+                        return CuestionaryCard(
+                            question: _cuestionaryController.questions[index],
+                            page: index,
+                        );
 
-                  }
-                ),
+                      }
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        )
-      ],
+            )
+          ],
+        ),
     );
   }
 }

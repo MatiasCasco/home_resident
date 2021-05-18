@@ -24,13 +24,39 @@ class OptionCuestionary extends StatelessWidget {
         init: CuestionaryController(),
         builder: (qnController) {
           Color getTheRightColor() {
-            if (qnController.isAnswered || qnController.questions[page].answerSelected.length > 0) {
+            if(qnController.isAnsweredCorrect){
+              //print("page $page");
+              //for(int item1 in qnController.questions[page].answer) {
+                //print("Respuesta $item1");
+                //for(int item2 in qnController.questions[page].answerSelected) {
+                //for(int i=0; i<qnController.questions[page].answerSelected.length; i++){
+                  /*if (index == item1) {
+                    return kGreenColor;
+                  } else */
+                   /* if (index == qnController.questions[page].answerSelected[i] &&
+                      qnController.questions[page].answerSelected[i] != item1) { */
+                  if(qnController.questions[page].answerSelected.contains(index) &&
+                      !qnController.questions[page].answer.contains(index)){
+                    return kRedColor;
+                  } else if (qnController.questions[page].answer.contains(index)) {
+                  //else if (index == item1) {
+                      return kGreenColor;
+                    }
+                  //print("seleccionada ${qnController.questions[page].answerSelected[i]}");
+                  /*if (item1 == qnController.questions[page].answerSelected[i]) {
+                    return kGreenColor;
+                  } else if(qnController.questions[page].answerSelected[i] != item1){
+                    return kRedColor;
+                  }*/
+                //}
+              //}
+            } else if (qnController.isAnswered || qnController.questions[page].answerSelected.length > 0) {
               /*for(var i = 0; i < qnController.selectedAns.length; i++) {
                 if (index == qnController.selectedAns[i]) {
                   return KOrangeColor;
                 }
               }*/
-              print("Page: $page");
+              //print("Page: $page");
               for(var i = 0; i < qnController.questions[page].answerSelected.length; i++) {
                 //print(qnController.questions[page].answerSelected[i]);
                 if (index == qnController.questions[page].answerSelected[i]) {
@@ -48,8 +74,22 @@ class OptionCuestionary extends StatelessWidget {
           }
 
           IconData getTheRightIcon() {
-            //return getTheRightColor() == kRedColor ? Icons.close : Icons.done;
-            return  getTheRightColor() == KOrangeColor ? Icons.ac_unit : null;
+            if(qnController.isAnsweredCorrect){
+              //return getTheRightColor() == kRedColor ? Icons.close : Icons.done;
+              return getTheRightColor() == kRedColor ? Icons.close : getTheRightColor() == kGreenColor && qnController.questions[page].answerSelected.contains(index) ? Icons.done : Icons.remove_done;
+              /*if(getTheRightColor() == kRedColor) return Icons.close;
+              if(getTheRightColor() == kGreenColor){
+                if(qnController.questions[page].answerSelected.contains(index)){
+                  return Icons.done;
+                } else {
+                  return null;
+                }
+              }*/
+            }
+            if(qnController.isAnswered || qnController.questions[page].answerSelected.length > 0){
+              return  getTheRightColor() == KOrangeColor ? Icons.ac_unit : null;
+            }
+
           }
 
           return InkWell(
@@ -64,9 +104,11 @@ class OptionCuestionary extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "${index + 1}. $text",
-                    style: TextStyle(color: getTheRightColor(), fontSize: 16),
+                  Expanded(
+                    child: Text(
+                      "${index + 1}. $text",
+                      style: TextStyle(color: getTheRightColor(), fontSize: 16),
+                    ),
                   ),
                   Container(
                     height: 26,

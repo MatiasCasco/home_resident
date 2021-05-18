@@ -2,9 +2,10 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:home_resident/models/question_cuestionary_model.dart';
-import 'package:home_resident/models/selected_model.dart';
+import 'package:home_resident/models/recover_cuestionary_list.dart';
+//impockage:home_resident/models/selected_model.dart';
 //import 'package:home_resident/models/question_model.dart';
-import 'package:home_resident/pages/cuestionario/componentes/score_screen.dart';
+//import 'package:home_resident/pages/cuestionario/componentes/score_screen.dart';
 //import 'package:quiz_app/models/Questions.dart';
 //import 'package:quiz_app/screens/score/score_screen.dart';
 
@@ -23,18 +24,26 @@ class CuestionaryController extends GetxController
   PageController _pageController;
   PageController get pageController => this._pageController;
 
-  List<QuestionCuestionary> _questions = sample_data
+ /* List<QuestionCuestionary> _questions = sample_data
       .map(
         (question) => QuestionCuestionary(
         id: question['id'],
         question: question['question'],
+        image: question['image'],
         options: question['options'],
         answer: question['answer_index'],
         answerSelected: [],
+        //score: 0,
         ),
   )
-      .toList();
-  List<QuestionCuestionary> get questions => this._questions;
+      .toList();*/
+  RecoverCuestionaryList recover = Get.put(RecoverCuestionaryList());
+
+  //List<Question> get questions => recover.questions;
+
+  List<QuestionCuestionary> get questions => recover.questions;
+  int _puntos = 0;
+  int get puntos => this._puntos;
 /*
   void questionsAnswer(List<int> selectedAnswer, int index) {
     _questions[index].selectedAnswer = selectedAnswer;
@@ -42,6 +51,8 @@ class CuestionaryController extends GetxController
 */
   bool _isAnswered = false;
   bool get isAnswered => this._isAnswered;
+  bool _isAnsweredCorrect = false;
+  bool get isAnsweredCorrect => this._isAnsweredCorrect;
 /*
   // ignore: deprecated_member_use
   List<Selected> _answerSelected = [];
@@ -94,45 +105,88 @@ class CuestionaryController extends GetxController
     //_animationController.dispose();
     _pageController.dispose();
   }
-  /*
-  void checkAns(QuestionCuestionary question, List<int> selectedIndex) {
+
+  //void checkAns(QuestionCuestionary question, List<int> selectedIndex) {
+  //void checkAns(QuestionCuestionary question, int page) {
     // because once user press any option then it will run
-    int _count = 0;
-    _isAnswered = true;
-    _correctAns = question.answer;
-    _selectedAns = selectedIndex;
+  void checkAns() {
+    _isAnsweredCorrect = true;
+
+    for(int i=0; i < questions.length; i++) {
+      int countCorrect = 0;
+      int countIncorrect = 0;
+      for(int item in questions[i].answerSelected){
+        questions[i].answer.contains(item)?countCorrect++:countIncorrect++;
+      }
+      if(questions[i].answer.length == 1){
+        if(countIncorrect==1 && countCorrect==1){
+          //print((puntos*(1/3)).round());
+          //questions[i].score = (puntos*(1/3)).round();
+          questions[i].score = (questions[i].assignedScore*(1/3)).round();
+        } else if((countIncorrect>1 && countCorrect==1)||(countIncorrect>=0 && countCorrect==0)){
+          questions[i].score = 0;
+        } else {
+          //questions[i].score = puntos;
+          questions[i].score = questions[i].assignedScore;
+        }
+      }
+      if(questions[i].answer.length > 1){
+        if(countIncorrect >= 0 && countCorrect == 0){
+          questions[i].score = 0;
+        } else if(countIncorrect >= 0 && countCorrect > 0){
+          //print("formula larga");
+          //questions[i].score = (countCorrect*puntos/questions[i].answer.length).round()-(countIncorrect*puntos/questions[i].answer.length*(2/3)).round();
+          questions[i].score = (countCorrect*questions[i].assignedScore/questions[i].answer.length).round()-(countIncorrect*questions[i].assignedScore/questions[i].answer.length*(2/3)).round();
+          /*print((countCorrect*puntos/_questions[i].answer.length).round());
+          print((countIncorrect*puntos/_questions[i].answer.length*(2/3)).round());
+          print((countCorrect*puntos/_questions[i].answer.length).round()-(countIncorrect*puntos/_questions[i].answer.length*(1/3)).round());
+          */
+        }
+      }
+      _puntos +=  questions[i].score;
+      //print(_questions[i].answer.length);
+      print("puntos de la pregunta $i es : ${questions[i].score}");
+      //print("Incorrectas $countIncorrect");
+      //print("Correctas $countCorrect");
+    }
+    print(puntos);
+    //_correctAns = question.answer;
+    //_selectedAns = selectedIndex;
+    /*
     for(int item1 in _correctAns) {
-      for(int item2 in _selectedAns) {
-        if (_correctAns == _selectedAns) _count++;
+      for(int item2 in _questions[page].answerSelected) {
+        if (item1 == item2) _count++;
       }
     }
     _numOfCorrectAns = (_count*10/_numOfCorrectAns).round();
+
+     */
     //if (_correctAns == _selectedAns) _numOfCorrectAns++;
 
     // It will stop the counter
     //_animationController.stop();
     update();
     // Once user select an ans after 3s it will go to the next qn
-    Future.delayed(Duration(seconds: 3), () {
+    /*Future.delayed(Duration(seconds: 3), () {
       nextQuestion();
-    });
+    });*/
   }
-  */
-  void checkAns(QuestionCuestionary question, int selectedIndex, int page) {
+
+  void markAns(QuestionCuestionary question, int selectedIndex, int page) {
     // because once user press any option then it will run
     //print(questionNumber);
     //print(_pageController.page.toString());
     _isAnswered = true;
-    _correctAns = question.answer; // esta es una lista
+    //_correctAns = question.answer; // esta es una lista
     //_selectedAns.add(selectedIndex) ;
     //print(_selectedAns.toString());
     //_questions[page].answerSelected.add(selectedIndex);
-    if(_questions[page].answerSelected.contains(selectedIndex)){
-      _questions[page].answerSelected.remove(selectedIndex);
+    if(questions[page].answerSelected.contains(selectedIndex)){
+      questions[page].answerSelected.remove(selectedIndex);
       //print(_questions[page].answerSelected.length);
       //_questions[page].answerSelected.add(selectedIndex);
     }else{
-      _questions[page].answerSelected.add(selectedIndex);
+      questions[page].answerSelected.add(selectedIndex);
       //print(_questions[page].answerSelected.length);
       //_questions[page].answerSelected.remove(selectedIndex);
     }
@@ -161,7 +215,7 @@ class CuestionaryController extends GetxController
   }*/
   void nextQuestion() {
     //_answerSelected.add(Selected(selectedAns));
-    if (_questionNumber.value != _questions.length) {
+    if (_questionNumber.value != questions.length) {
       _isAnswered = false;
       //_answerSelected.add(Selected(_selectedAns));
       //_answerSelected.add(Selected(selectedAns));

@@ -22,7 +22,9 @@ class Cuestionary extends StatelessWidget {
         actions: [
           TextButton(
               onPressed: (){
-                 Get.to(ScoreScreen());
+                 //Get.to(ScoreScreen());
+                _controller.checkAns();
+                //Get.to(Cuestionary());
               },
               //onPressed: _controller.nextQuestion(),
               child: Text("Skip")),

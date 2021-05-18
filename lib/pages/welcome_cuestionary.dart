@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:home_resident/models/recover_cuestionary_list.dart';
 import 'package:home_resident/models/recover_questions_list.dart';
 import 'package:home_resident/pages/choose_matter.dart';
 import 'package:home_resident/pages/splash_page_get.dart';
@@ -11,7 +12,7 @@ import 'cuestionario/cuestionary.dart';
 class WelcomeCuestionary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //RecoverQuestionsList recover = Get.put(RecoverQuestionsList());
+    RecoverCuestionaryList recover = Get.put(RecoverCuestionaryList());
     return Scaffold(
       body: Stack(
         children: [
@@ -36,19 +37,8 @@ class WelcomeCuestionary extends StatelessWidget {
                         Navigator.push(context, route);
                       },*/
                       onTap: () {
-                        //recover.loadMateria();
-                        //Get.to(SplashPageGet(), arguments: "ChooseMatter");
-                        //Get.to(ChosseMatter());
-                        /*  Este es el que anda
-                        recover.load();
-                        Get.to(SplashPageGet());
-                        */
-                        Get.to(Cuestionary());
-                        /*
-                        load();
-                        Get.to(Quiz(),arguments: _questions);
-                         */
-                        //Get.to(Quiz(), duration: Duration(seconds: 3));
+                        recover.loadTest(89);
+                        Get.to(SplashPageGet(), arguments: "Cuestionary");
                       },
                       child: Container(
                         width: double.infinity,

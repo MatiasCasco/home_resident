@@ -1,11 +1,27 @@
 class QuestionCuestionary {
   final int id;
   final List<int> answer;
+  final int idQuestion;
   final String question;
   final String image;
+  final List<int> listIdR;
   final List<String> options;
   final List<int> answerSelected;
-  QuestionCuestionary ({this.id, this.question, this.image, this.answer, this.options, this.answerSelected});
+  final int assignedScore;
+  int score = 0;
+
+  QuestionCuestionary({
+    this.id,
+    this.answer,
+    this.idQuestion,
+    this.question,
+    this.image,
+    this.listIdR,
+    this.options,
+    this.answerSelected,
+    this.assignedScore,
+    this.score});
+//QuestionCuestionary ({this.id, this.question, this.image, this.answer, this.options, this.answerSelected, this.score});
 
 }
 
@@ -38,7 +54,7 @@ const List sample_data = [
     "image" : " ",
     "options": ['Cin', 'Count>>', 'Cout', 'Output>>'],
     "answer_index": [1,2],
-  },
+  }
   /*
   {
     "id": 5,
