@@ -24,6 +24,7 @@ class Cuestionary extends StatelessWidget {
               onPressed: (){
                  //Get.to(ScoreScreen());
                 _controller.checkAns();
+                _controller.cargaBD();
                 //Get.to(Cuestionary());
               },
               //onPressed: _controller.nextQuestion(),

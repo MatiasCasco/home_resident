@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
+import 'package:home_resident/api/test_api.dart';
 import 'package:home_resident/models/question_cuestionary_model.dart';
 import 'package:home_resident/models/recover_cuestionary_list.dart';
 //impockage:home_resident/models/selected_model.dart';
@@ -210,9 +211,22 @@ class CuestionaryController extends GetxController
       nextQuestion();
     });*/
   }
- /* void carga(){
-    _answerSelected.add(Selected(_selectedAns));
-  }*/
+  void cargaBD(){
+    int idAlumno = 16;
+    int cuestionario = 89;
+    TestApi _testAPI = TestApi();
+    for(int i=0; i < questions.length; i++) {
+      for(int x=0; x < questions[i].answerSelected.length; x++) {
+        // falta pasarle el id de la rta correccto
+        _testAPI.addSelectedAnswer(idAlumno, questions[i].listIdR[questions[i].answerSelected[x]]);
+        //print(questions[i].listIdR[questions[i].answerSelected[x]]);
+      }
+      _testAPI.addPuntajexPregunta(idAlumno, questions[i].idQuestion, questions[i].score);
+      //print(questions[i].score);
+    }
+    _testAPI.addPuntajexCuestionario(idAlumno, cuestionario, puntos);
+    //print(puntos);
+  }
   void nextQuestion() {
     //_answerSelected.add(Selected(selectedAns));
     if (_questionNumber.value != questions.length) {
