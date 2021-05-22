@@ -26,7 +26,7 @@ class ChosseMatter extends StatelessWidget {
                             child: Text(recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white38),),
                             onPressed: () {
                               recover.load(recover.materias[index].nameMateria);
-                              Get.to(SplashPageGet(),arguments: "Quiz");
+                              Get.to(SplashPageGet(),arguments: {"Page":"Quiz"});
                             },
               ),
             ));

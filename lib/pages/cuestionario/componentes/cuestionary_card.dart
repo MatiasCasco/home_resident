@@ -39,7 +39,7 @@ class CuestionaryCard extends StatelessWidget {
     return Container(
       child: SingleChildScrollView(
         child: Container(
-          height: screenWidth*2-padding.top-padding.bottom,
+          height: screenWidth*3-padding.top-padding.bottom,
           margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
           padding: EdgeInsets.all(8.0),
           decoration: BoxDecoration(

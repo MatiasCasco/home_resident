@@ -32,11 +32,11 @@ class BodyCuestionary extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  /*Padding(
+                  Padding(
                     padding:
                     const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                     child: ProgressBarC(),
-                  ),*/
+                  ),
                   SizedBox(height: kDefaultPadding),
                   Obx(
                       ()=> Text.rich(TextSpan(

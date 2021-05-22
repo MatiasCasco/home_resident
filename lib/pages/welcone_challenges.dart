@@ -36,7 +36,7 @@ class WelcomeChallenges extends StatelessWidget {
                       },*/
                       onTap: () {
                         recover.loadMateria();
-                        Get.to(SplashPageGet(), arguments: "ChooseMatter");
+                        Get.to(SplashPageGet(), arguments: {"Page":"ChooseMatter"});
                         //Get.to(ChosseMatter());
                        /*  Este es el que anda
                         recover.load();

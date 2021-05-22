@@ -13,6 +13,9 @@ class ProgressBarC extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int countS =0;
+    int countM =0;
+    int countH =0;
     return Container(
       width: double.infinity,
       height: 35,
@@ -23,6 +26,7 @@ class ProgressBarC extends StatelessWidget {
       child: GetBuilder<CuestionaryController>(
         init: CuestionaryController(),
         builder: (controller) {
+          //print(controller.animation.value);
           return Stack(
             children: [
               // LayoutBuilder provide us the available space for the conatiner
@@ -30,8 +34,8 @@ class ProgressBarC extends StatelessWidget {
               LayoutBuilder(
                 builder: (context, constraints) => Container(
                   // from 0 to 1 it takes 60s
-                  //width: constraints.maxWidth * controller.animation.value,
-                  width: constraints.maxWidth,
+                  width: constraints.maxWidth * controller.animation.value,
+                  //width: constraints.maxWidth,
                   decoration: BoxDecoration(
                     gradient: kPrimaryGradient,
                     borderRadius: BorderRadius.circular(50),
@@ -46,7 +50,11 @@ class ProgressBarC extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       //
-                      Text("${(60).round()} sec"),
+                      Text(
+                          "${controller.countH} hr "
+                          +"${controller.countM} min "
+                          +"${controller.countS} sec"
+                      ),
                       WebsafeSvg.asset("assets/icons/clock.svg"),
                     ],
                   ),

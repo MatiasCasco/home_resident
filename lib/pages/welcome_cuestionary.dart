@@ -37,8 +37,9 @@ class WelcomeCuestionary extends StatelessWidget {
                         Navigator.push(context, route);
                       },*/
                       onTap: () {
-                        recover.loadTest(89);
-                        Get.to(SplashPageGet(), arguments: "Cuestionary");
+                        recover.loadCuestionarios("PrimeroTT");
+                        recover.loadCuestionariosResueltos(31);
+                        Get.to(SplashPageGet(), arguments: {"Page":"ChooseCuestionary"});
                       },
                       child: Container(
                         width: double.infinity,
