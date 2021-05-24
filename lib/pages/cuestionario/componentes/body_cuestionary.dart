@@ -40,7 +40,8 @@ class BodyCuestionary extends StatelessWidget {
                   SizedBox(height: kDefaultPadding),
                   Obx(
                       ()=> Text.rich(TextSpan(
-                        text: "Score: ${_cuestionaryController.questions[(_cuestionaryController.questionNumber.value-1)].score}/${_cuestionaryController.questions[(_cuestionaryController.questionNumber.value-1)].assignedScore}",
+                        text: "Score: ${_cuestionaryController.questions[(_cuestionaryController.questionNumber.value-1)].score}/${_cuestionaryController.questions[(_cuestionaryController.questionNumber.value-1)].assignedScore}"
+                        + " Total: ${_cuestionaryController.puntos}/${_cuestionaryController.puntosCuestionario}",
                         style: Theme.of(context)
                             .textTheme
                             .headline4

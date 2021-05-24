@@ -11,6 +11,7 @@ class Quiz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     QuestionsController _controller = Get.put(QuestionsController());
+    _controller.alumno = Get.arguments["Alumno"] as int;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -21,7 +22,7 @@ class Quiz extends StatelessWidget {
           onPressed: (){
             _controller.back();
             //_controller.onClose();
-            Get.off(HomePage());
+            Get.off(HomePage(), arguments: Get.arguments["Alumno"] as int);
           },
           padding: EdgeInsets.all(15),
           child: SvgPicture.asset("assets/icons/back.svg", width: 30,),),

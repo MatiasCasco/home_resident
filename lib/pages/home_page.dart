@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:home_resident/pages/reto/pregunta/quiz.dart';
 import 'package:home_resident/widget/bottom_menu.dart';
 import 'package:home_resident/widget/my_page_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'home_page_tabs/ajuste_tab.dart';
 import 'home_page_tabs/historial_tab.dart';
 import 'home_page_tabs/menu_tab.dart';
@@ -18,14 +20,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   int _currentPage = 0;
-  final _menu =  [ // Lista precargada
-    BottomMenuItem(iconPath: "assets/icons/menu.svg", label: "Incio", content: MenuTab()),
-    BottomMenuItem(iconPath: "assets/icons/history.svg", label: "Historial", content: HistorialTab()),
-    BottomMenuItem(iconPath: "assets/icons/user.svg", label: "Usuarios", content: UserTab()),
-    BottomMenuItem(iconPath: "assets/icons/adjust.svg", label: "Ajuste", content: AjusteTab())
-  ];
-
-
   @override
   void initState() {
     super.initState();
@@ -37,6 +31,19 @@ class _HomePageState extends State<HomePage> {
   }
   @override
   Widget build(BuildContext context) {
+    int id = ModalRoute.of(context).settings.arguments;
+
+    if(id == null) {
+      id = Get.arguments as int;
+    }
+    print("Este es la prueba: $id");
+    final _menu =  [ // Lista precargada
+      BottomMenuItem(iconPath: "assets/icons/menu.svg", label: "Incio", content: MenuTab(idAlumno: id)),
+      BottomMenuItem(iconPath: "assets/icons/history.svg", label: "Historial", content: HistorialTab(idAlumno: id)),
+      BottomMenuItem(iconPath: "assets/icons/user.svg", label: "Usuarios", content: UserTab()),
+      BottomMenuItem(iconPath: "assets/icons/adjust.svg", label: "Ajuste", content: AjusteTab())
+    ];
+    print('Identificador del alumno: '+ id.toString());
     return Scaffold(
       // ver si no es mejor cambiar con el myAppBar
       appBar: AppBar(

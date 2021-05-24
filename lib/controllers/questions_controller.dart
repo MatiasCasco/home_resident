@@ -36,6 +36,14 @@ class QuestionsController extends GetxController
 
   bool get isAnswered => this._isAnswered;
 
+  int _alumno;
+
+  int get alumno => this._alumno;
+
+  set alumno(int value) {
+    _alumno = value;
+  }
+
   int _correctAns;
 
   int get correctAns => this._correctAns;
@@ -135,7 +143,7 @@ class QuestionsController extends GetxController
       _playFile();
       Future.delayed(Duration(seconds: 5), () {
         _stopFile();
-        Get.to(HomePage());
+        Get.off(HomePage(), arguments: alumno);
       });
     }
   }

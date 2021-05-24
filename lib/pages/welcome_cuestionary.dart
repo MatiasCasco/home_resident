@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:home_resident/models/recover_cuestionary_list.dart';
-import 'package:home_resident/models/recover_questions_list.dart';
-import 'package:home_resident/pages/choose_matter.dart';
 import 'package:home_resident/pages/splash_page_get.dart';
 import 'package:home_resident/utils/constants.dart';
 
-import 'cuestionario/cuestionary.dart';
 
 class WelcomeCuestionary extends StatelessWidget {
+  int id;
+  WelcomeCuestionary({this.id});
+
   @override
   Widget build(BuildContext context) {
     RecoverCuestionaryList recover = Get.put(RecoverCuestionaryList());
@@ -37,9 +37,10 @@ class WelcomeCuestionary extends StatelessWidget {
                         Navigator.push(context, route);
                       },*/
                       onTap: () {
+                        print("id alumno en welcome $id");
                         recover.loadCuestionarios("PrimeroTT");
-                        recover.loadCuestionariosResueltos(31);
-                        Get.to(SplashPageGet(), arguments: {"Page":"ChooseCuestionary"});
+                        recover.loadCuestionariosResueltos(id);
+                        Get.to(SplashPageGet(), arguments: {"Page":"ChooseCuestionary", "Alumno": id});
                       },
                       child: Container(
                         width: double.infinity,

@@ -7,6 +7,8 @@ import 'package:home_resident/pages/splash_page_get.dart';
 import 'package:home_resident/utils/constants.dart';
 
 class WelcomeChallenges extends StatelessWidget {
+  int id;
+  WelcomeChallenges({this.id});
   @override
   Widget build(BuildContext context) {
     RecoverQuestionsList recover = Get.put(RecoverQuestionsList());
@@ -36,7 +38,7 @@ class WelcomeChallenges extends StatelessWidget {
                       },*/
                       onTap: () {
                         recover.loadMateria();
-                        Get.to(SplashPageGet(), arguments: {"Page":"ChooseMatter"});
+                        Get.to(SplashPageGet(), arguments: {"Page":"ChooseMatter", "Alumno": id});
                         //Get.to(ChosseMatter());
                        /*  Este es el que anda
                         recover.load();

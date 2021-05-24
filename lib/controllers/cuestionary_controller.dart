@@ -45,12 +45,23 @@ class CuestionaryController extends GetxController
   set cuestionario(Cuestionario value) {
     _cuestionario = value;
   }
+  int _alumno;
+  int get alumno => this._alumno;
 
+  set alumno(int value) {
+    _alumno = value;
+  }
   RecoverCuestionaryList recover = Get.put(RecoverCuestionaryList());
 
   List<QuestionCuestionary> get questions => recover.questions;
   int _puntos = 0;
   int get puntos => this._puntos;
+
+  int _puntosCuestionario = 0;
+  int get puntosCuestionario => this._puntosCuestionario;
+  set puntosCuestionario(int value) {
+    _puntosCuestionario = value;
+  }
 
   bool _isAnswered = false;
   bool get isAnswered => this._isAnswered;
@@ -170,7 +181,8 @@ class CuestionaryController extends GetxController
     return tiempo.round();
   }
   void cargaBD(){
-    int idAlumno = 16;
+    print("Carga de base de datos" + alumno.toString());
+    int idAlumno = alumno;
     int test = cuestionario.idCuestionario;
     TestApi _testAPI = TestApi();
     for(int i=0; i < questions.length; i++) {

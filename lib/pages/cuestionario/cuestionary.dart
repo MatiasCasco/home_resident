@@ -9,6 +9,7 @@ class Cuestionary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CuestionaryController _controller = Get.put(CuestionaryController());
+    _controller.puntosCuestionario =  Get.arguments["Puntos"];
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -19,6 +20,8 @@ class Cuestionary extends StatelessWidget {
         actions: [
           TextButton(
               onPressed: (){
+                print("skip este es el id: "+Get.arguments["Alumno"].toString());
+                _controller.alumno =  Get.arguments["Alumno"];
                 _controller.checkAns();
                 _controller.cargaBD();
               },

@@ -11,6 +11,9 @@ import 'splash_page_get.dart';
 class ChooseCuestionary extends StatelessWidget {
   RecoverCuestionaryList recover = Get.put(RecoverCuestionaryList());
   CuestionaryController controller = Get.put(CuestionaryController());
+  int id;
+
+  ChooseCuestionary({this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,9 @@ class ChooseCuestionary extends StatelessWidget {
               //recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white38),
             ),
             onPressed: () {
-              if(controller.findCuestionary(16, recover.cuestionarios[index].idCuestionario)){
+              //controller.alumno = id;
+              print('Este es el idAlumno en choose_cuestionary'+controller.alumno.toString());
+              if(controller.findCuestionary(id, recover.cuestionarios[index].idCuestionario)){
                 noficacionResuelto();
               } else {
                 if (!controller.fechaEnTiempoCorrecto(
@@ -51,7 +56,7 @@ class ChooseCuestionary extends StatelessWidget {
                       recover.cuestionarios[index].fechaCierre);
                 } else {
                   recover.loadTest(recover.cuestionarios[index].idCuestionario);
-                  Get.off(SplashPageGet(), arguments: {"Page":"Cuestionary","Cuestionario":recover.cuestionarios[index]});
+                  Get.off(SplashPageGet(), arguments: {"Page":"Cuestionary","Cuestionario":recover.cuestionarios[index], "Alumno": id, "Puntos": recover.cuestionarios[index].puntos});
                 }
               }
               //recover.loadTest(recover.cuestionarios[index].idCuestionario);

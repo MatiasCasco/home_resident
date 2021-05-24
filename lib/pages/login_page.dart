@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   GlobalKey<FormState> _formKey = GlobalKey();
   bool _isFetching = false;
   String _email = ' ', _password = ' ';
-
+  int idAlumno = 16;
   _submit() async {
     final bool isValid = _formKey.currentState.validate();
     if (isValid) {
@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
       if (isOk) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setBool("wasLogin", true);
-        Navigator.pushReplacementNamed(context, HomePage.routeName);
+        Navigator.pushReplacementNamed(context, HomePage.routeName, arguments: idAlumno);
       } else {
         setState(() {
           _isFetching = false;
@@ -62,6 +62,8 @@ class _LoginPageState extends State<LoginPage> {
     }
     return "Invalid Password";
   }
+
+
 
   @override
   void dispose() {

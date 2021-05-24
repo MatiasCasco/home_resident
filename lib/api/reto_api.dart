@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http; // Alias
 
 class RetoAPI {
-  String api = "http://192.168.0.10:8084/homeApi/rest";
+  String api = "http://192.168.0.3:8084/homeApi/rest";
   Future<List<dynamic>> getReto(String sizeList, String cantOptions, String materia, String curso) async {
     try {
       /*final http.Response response = await http.get(
