@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:home_resident/pages/reto/pregunta/quiz.dart';
+import 'package:home_resident/utils/connection_status.dart';
 import 'package:home_resident/widget/bottom_menu.dart';
 import 'package:home_resident/widget/my_page_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';

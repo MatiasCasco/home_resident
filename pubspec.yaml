@@ -39,6 +39,8 @@ dependencies:
   get: ^3.26.0
   audioplayers: ^0.14.2
   intl: ^0.15.8
+  connectivity: ^2.0.2
+  provider: ^4.3.3
 
 dev_dependencies:
   flutter_test:
