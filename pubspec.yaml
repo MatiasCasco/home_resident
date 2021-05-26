@@ -40,7 +40,7 @@ dependencies:
   audioplayers: ^0.14.2
   intl: ^0.15.8
   connectivity: ^2.0.2
-  provider: ^4.3.3
+
 
 dev_dependencies:
   flutter_test:
@@ -82,6 +82,7 @@ flutter:
     - assets/icons/bg.svg
     - assets/icons/clock.svg
     - assets/icons/fondo.png
+    - assets/icons/menu-line.svg
     - assets/icons/imageNotAvailable.svg
     - assets/DefaultImage.png
     - assets/notAvailable.png

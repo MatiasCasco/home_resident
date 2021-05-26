@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:home_resident/api/account_api.dart';
+import 'package:home_resident/models/recover_cuestionary_list.dart';
+import 'package:home_resident/pages/splash_page_get.dart';
+import 'package:home_resident/pages/welcome_ranking.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../ranking_page.dart';
+
 class UserTab extends StatefulWidget {
+  String nameCurso;
+
+  UserTab({this.nameCurso});
+
   @override
   _UserTabState createState() => _UserTabState();
 }
 
 class _UserTabState extends State<UserTab> {
+ /*
   List<dynamic> _users = [];
   AccountAPI _accountAPI = AccountAPI();
   bool _isLoading = true;
@@ -63,12 +74,20 @@ class _UserTabState extends State<UserTab> {
       ),
     );
   }
+*/
 
+  //RecoverCuestionaryList recover = Get.put(RecoverCuestionaryList());
+  /*Future<void> cargaRanking() async {
+    await Future.delayed(Duration(seconds: 3));
+  }*/
+  String nameCurso;
   @override
   Widget build(BuildContext context) {
-    //return Container();
+
     print("user");
-    return ListView(
+    return WelcomeRanking(nameCurso: nameCurso,);
+    //return Ranking();
+    /*return ListView(
       children: [
         _isLoading
             ? _shimmer()
@@ -97,6 +116,16 @@ class _UserTabState extends State<UserTab> {
                 ),
               )
       ],
-    );
+    );*/
+  }
+
+  @override
+  void initState() {
+    nameCurso = widget.nameCurso;
+    /*Future<void> cargaRanking() async {
+      await Future.delayed(Duration(seconds: 3));
+    }
+    recover.loadRanking(77);
+    Get.to(SplashPageGet(), arguments: {"Page":"WelcomeRanking", "Curso": idCurso});*/
   }
 }

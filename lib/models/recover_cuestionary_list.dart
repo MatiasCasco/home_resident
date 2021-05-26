@@ -59,6 +59,28 @@ class RecoverCuestionaryList {
     ).toList();
     print(_cuestionarios);
   }
+
+  List<Cuestionario> _cuestionariosOFMateria = [];
+  List<Cuestionario> get cuestionariosOFMateria => this._cuestionariosOFMateria;
+
+  Future<void> loadCuestionariosOFMateria(String nameCurso, String nameMateria) async {
+    print("Carga de list<Cuestionario> de una materia especifica");
+    final _listCuestionarioM = await _cuestionarioApi.getCuestionariosOFMateria(nameCurso, nameMateria);
+    _cuestionariosOFMateria = _listCuestionarioM
+        .map(
+          (cuestionary) => Cuestionario(
+          idCuestionario: cuestionary['idCuestionario'],
+          puntos: cuestionary['puntos'],
+          idCurso: cuestionary['idCurso'],
+          idMateria: cuestionary['idMateria'],
+          nameMateria: cuestionary['nombreMateria'],
+          nameCurso: cuestionary['nombreCurso'],
+          fechaApertura: cuestionary['fechaInicio'],
+          fechaCierre: cuestionary['fechaCierre'],
+          tiempoLimite: cuestionary['tiempoLimite']),
+    ).toList();
+    print(_cuestionariosOFMateria);
+  }
   /********************************************************************************/
   List<PuntajeCuestionario> _cuestionariosResueltos = [];
   List<PuntajeCuestionario> get cuestionariosResueltos => this._cuestionariosResueltos;
@@ -74,6 +96,24 @@ class RecoverCuestionaryList {
           puntaje: resuelto['puntuacion']),
     ).toList();
     print(_cuestionariosResueltos);
+    //print(_cuestionariosResueltos[0].idAlumno);
+  }
+
+  /********************************************************************************/
+  List<PuntajeCuestionario> _ranking = [];
+  List<PuntajeCuestionario> get ranking => this._ranking;
+
+  Future<void> loadRanking(int idCuestionario) async {
+    print("Carga el ranking de un cuestionario especifico");
+    final _rankingC = await _cuestionarioApi.getRanking(idCuestionario);
+    _ranking = _rankingC
+        .map(
+          (ranking) => PuntajeCuestionario(
+          nombre: ranking['nombre'],
+          apellido: ranking['apellido'],
+          puntaje: ranking['puntos']),
+    ).toList();
+    print(_ranking);
     //print(_cuestionariosResueltos[0].idAlumno);
   }
 }

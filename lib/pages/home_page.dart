@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:home_resident/models/recover_questions_list.dart';
 import 'package:home_resident/pages/reto/pregunta/quiz.dart';
 import 'package:home_resident/utils/connection_status.dart';
 import 'package:home_resident/widget/bottom_menu.dart';
@@ -19,11 +20,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
+  RecoverQuestionsList recover = Get.put(RecoverQuestionsList());
   int _currentPage = 0;
   @override
   void initState() {
     super.initState();
+    recover.loadMateria();
   }
 
   @override
@@ -41,7 +43,7 @@ class _HomePageState extends State<HomePage> {
     final _menu =  [ // Lista precargada
       BottomMenuItem(iconPath: "assets/icons/menu.svg", label: "Incio", content: MenuTab(idAlumno: id)),
       BottomMenuItem(iconPath: "assets/icons/history.svg", label: "Historial", content: HistorialTab(idAlumno: id)),
-      BottomMenuItem(iconPath: "assets/icons/user.svg", label: "Usuarios", content: UserTab()),
+      BottomMenuItem(iconPath: "assets/icons/user.svg", label: "Usuarios", content: UserTab(nameCurso: "PrimeroTT")),
       BottomMenuItem(iconPath: "assets/icons/adjust.svg", label: "Ajuste", content: AjusteTab())
     ];
     print('Identificador del alumno: '+ id.toString());
@@ -55,8 +57,6 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(icon: Icon(Icons.send),
               onPressed: (){
-                //final route = MaterialPageRoute(builder: (BuildContext _)=>ChatPage(name: "Matias Casco",));
-                //final route = MaterialPageRoute(builder: (BuildContext _)=>Quiz());
                 final route = MaterialPageRoute(builder: (BuildContext _)=>Score());
                 Navigator.push(context, route);
               }),

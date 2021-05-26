@@ -4,8 +4,6 @@ import 'package:home_resident/controllers/cuestionary_controller.dart';
 import 'package:home_resident/pages/cuestionario/componentes/body_cuestionary.dart';
 import 'package:home_resident/utils/connection_status.dart';
 import 'package:home_resident/utils/dialogs.dart';
-import 'package:provider/provider.dart';
-
 import 'componentes/score_screen.dart';
 
 class Cuestionary extends StatelessWidget {

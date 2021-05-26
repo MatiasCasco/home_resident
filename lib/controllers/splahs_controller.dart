@@ -2,8 +2,11 @@ import 'package:get/get.dart';
 import 'package:home_resident/models/cuestionario_model.dart';
 import 'package:home_resident/pages/choose_cuestionary.dart';
 import 'package:home_resident/pages/choose_matter.dart';
+import 'package:home_resident/pages/choose_test.dart';
 import 'package:home_resident/pages/cuestionario/cuestionary.dart';
+import 'package:home_resident/pages/ranking_page.dart';
 import 'package:home_resident/pages/reto/pregunta/quiz.dart';
+import 'package:home_resident/pages/welcome_ranking.dart';
 
 class SplashController extends GetxController {
 
@@ -29,6 +32,21 @@ class SplashController extends GetxController {
     if(Get.arguments["Page"] == "ChooseCuestionary") {
       Future.delayed(Duration(seconds: 3),(){
         Get.off(ChooseCuestionary(id: Get.arguments["Alumno"]));
+      });
+    }
+    if(Get.arguments["Page"] == "WelcomeRanking") {
+      Future.delayed(Duration(seconds: 3),(){
+        Get.off(WelcomeRanking());
+      });
+    }
+    if(Get.arguments["Page"] == "ChooseTest") {
+      Future.delayed(Duration(seconds: 3),(){
+        Get.off(ChooseTest());
+      });
+    }
+    if(Get.arguments["Page"] == "Ranking") {
+      Future.delayed(Duration(seconds: 3),(){
+        Get.off(Ranking());
       });
     }
   }
