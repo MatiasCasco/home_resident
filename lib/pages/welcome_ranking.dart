@@ -28,11 +28,13 @@ class WelcomeRanking extends StatelessWidget {
           child: TextButton(
             child: Text(recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white38),),
             onPressed: () {
-              //recoverC.loadCuestionarios(nameCurso);
-              recoverC.loadCuestionariosOFMateria(nameCurso, recover.materias[index].nameMateria);
-              //print(recoverC.cuestionariosOFMateria);
-              Get.to(SplashPageGet(), arguments: {"Page":"ChooseTest"});
+              /* Asi seguir los comentarios para armar ranking con profesor en su propia app
+              recoverC.loadRankingGlobal(nameCurso, recover.materias[index].nameMateria);
+              Get.to(SplashPageGet(), arguments: {"Page":"RankingGlobal","Curso":nameCurso,"Materia":recover.materias[index].nameMateria});
+              */
+              Get.to(SplashPageGet(), arguments: {"Page":"Rankingnes","Curso":nameCurso,"Materia":recover.materias[index].nameMateria});
             },
+
           ),
         ));
     return Scaffold(

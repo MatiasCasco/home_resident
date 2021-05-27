@@ -32,7 +32,8 @@ class _SplashPageState extends State<SplashPage> with AfterLayoutMixin {
       print("ir a login");
       Navigator.pushReplacementNamed(context, LoginPage.routeName);
     } else {
-      Navigator.pushNamed(context, HomePage.routeName);
+      //Navigator.pushNamed(context, HomePage.routeName);
+      Navigator.pushReplacementNamed(context, HomePage.routeName);
     }
   }
   @override

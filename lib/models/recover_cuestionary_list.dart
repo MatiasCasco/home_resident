@@ -4,6 +4,7 @@ import 'package:home_resident/models/cuestionario_model.dart';
 
 import 'puntaje_cuestionario_model.dart';
 import 'question_cuestionary_model.dart';
+import 'ranking_global.dart';
 
 class RecoverCuestionaryList {
   List<QuestionCuestionary> _questions = [];
@@ -114,6 +115,25 @@ class RecoverCuestionaryList {
           puntaje: ranking['puntos']),
     ).toList();
     print(_ranking);
+    //print(_cuestionariosResueltos[0].idAlumno);
+  }
+
+  /********************************************************************************/
+  List<RankingGlobal> _rankingGlobal = [];
+  List<RankingGlobal> get rankingGlobal => this._rankingGlobal;
+
+  Future<void> loadRankingGlobal(String nameCurso, String nameMateria) async {
+    print("Carga el ranking global por materia");
+    final _rankingG = await _cuestionarioApi.getRankingGlobal(nameCurso, nameMateria);
+    _rankingGlobal = _rankingG
+        .map(
+          (ranking) => RankingGlobal(
+          nombre: ranking['nombre'],
+          apellido: ranking['apellido'],
+          puntos: ranking['puntosMateria'],
+          puntosObtenidos: ranking['puntosObtenido']),
+    ).toList();
+    print(_rankingGlobal);
     //print(_cuestionariosResueltos[0].idAlumno);
   }
 }

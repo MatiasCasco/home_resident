@@ -4,6 +4,8 @@ import 'package:home_resident/pages/choose_cuestionary.dart';
 import 'package:home_resident/pages/choose_matter.dart';
 import 'package:home_resident/pages/choose_test.dart';
 import 'package:home_resident/pages/cuestionario/cuestionary.dart';
+import 'package:home_resident/pages/rankignes_page.dart';
+import 'package:home_resident/pages/ranking_global_page.dart';
 import 'package:home_resident/pages/ranking_page.dart';
 import 'package:home_resident/pages/reto/pregunta/quiz.dart';
 import 'package:home_resident/pages/welcome_ranking.dart';
@@ -44,9 +46,19 @@ class SplashController extends GetxController {
         Get.off(ChooseTest());
       });
     }
+    if(Get.arguments["Page"] == "Rankingnes") {
+      Future.delayed(Duration(seconds: 3),(){
+        Get.off(Rankignes(), arguments: {"Curso":Get.arguments["Curso"], "Materia": Get.arguments["Materia"]});
+      });
+    }
     if(Get.arguments["Page"] == "Ranking") {
       Future.delayed(Duration(seconds: 3),(){
         Get.off(Ranking());
+      });
+    }
+    if(Get.arguments["Page"] == "RankingGlobal") {
+      Future.delayed(Duration(seconds: 3),(){
+        Get.off(RankingGlobalM());
       });
     }
   }

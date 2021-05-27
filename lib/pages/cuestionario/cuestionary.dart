@@ -47,7 +47,7 @@ class Cuestionary extends StatelessWidget {
                 _controller.checkAns();
                 _controller.cargaBD();*/
               },
-              child: Text("Skip")),
+              child: IconButton(icon: Icon(Icons.send, color: Colors.white,)),),
         ],
       ),
       body: BodyCuestionary(),
