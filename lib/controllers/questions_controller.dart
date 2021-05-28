@@ -44,6 +44,14 @@ class QuestionsController extends GetxController
     _alumno = value;
   }
 
+  String _materia;
+
+  String get materia => this._materia;
+
+  set materia(String value) {
+    _materia = value;
+  }
+
   int _correctAns;
 
   int get correctAns => this._correctAns;
@@ -108,10 +116,20 @@ class QuestionsController extends GetxController
     _selectedAns = selectedIndex;
     if (_correctAns == _selectedAns) {
       _numOfCorrectAns++;
-      play.play('sound/correcto.mp3');
+      //play.play('sound/correcto.mp3');
+      if(materia?.toLowerCase() == "Guarani"?.toLowerCase()){
+        play.play('sound/bien1.ogg');
+      } else {
+        play.play('sound/correcto.mp3');
+      }
     } else {
       //final play =AudioCache();
-      play.play('sound/error.mp3');
+      //play.play('sound/error.mp3');
+      if(materia?.toLowerCase() == "Guarani"?.toLowerCase()) {
+        play.play('sound/mal1.ogg');
+      } else {
+        play.play('sound/error.mp3');
+      }
     }
     // Detendrá el contador
     _animationController.stop();

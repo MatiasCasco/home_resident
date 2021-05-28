@@ -8,7 +8,8 @@ import 'package:home_resident/utils/constants.dart';
 
 class WelcomeCuestionary extends StatelessWidget {
   int id;
-  WelcomeCuestionary({this.id});
+  String curso;
+  WelcomeCuestionary({this.id, this.curso});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class WelcomeCuestionary extends StatelessWidget {
                       },*/
                       onTap: () {
                         print("id alumno en welcome $id");
-                        recover.loadCuestionarios("PrimeroTT");
+                        recover.loadCuestionarios(curso);
                         recover.loadCuestionariosResueltos(id);
                         Get.to(SplashPageGet(), arguments: {"Page":"ChooseCuestionary", "Alumno": id});
                       },

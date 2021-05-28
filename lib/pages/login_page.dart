@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:home_resident/api/account_api.dart';
+import 'package:home_resident/models/alumno_model.dart';
 import 'package:home_resident/utils/dialogs.dart';
 import 'package:home_resident/widget/my_btn.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,7 +21,8 @@ class _LoginPageState extends State<LoginPage> {
   GlobalKey<FormState> _formKey = GlobalKey();
   bool _isFetching = false;
   String _email = ' ', _password = ' ';
-  int idAlumno = 38;
+  int idAlumno = 39;
+  String Curso = "PrimeroTM";
   _submit() async {
     final bool isValid = _formKey.currentState.validate();
     if (isValid) {
@@ -33,6 +35,8 @@ class _LoginPageState extends State<LoginPage> {
       if (isOk) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setBool("wasLogin", true);
+        await prefs.setString("Curso", Curso);
+        await prefs.setInt("Alumno", idAlumno);
         Navigator.pushReplacementNamed(context, HomePage.routeName, arguments: idAlumno);
       } else {
         setState(() {

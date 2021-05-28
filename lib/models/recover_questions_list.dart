@@ -10,9 +10,9 @@ class RecoverQuestionsList {
   List<Question> get questions => this._questions;
 
 
-  Future<void> load(String materia) async {
+  Future<void> load(String materia, String curso) async {
     print("Carga de list<Question>");
-    final _reto = await _retoAPI.getReto("6", "4", materia,"PrimeroTT");
+    final _reto = await _retoAPI.getReto("6", "4", materia, curso);
     _questions = _reto
         .map(
           (question) => Question(
@@ -30,9 +30,9 @@ class RecoverQuestionsList {
   List<Materia> _materias = [];
   List<Materia> get materias => this._materias;
 
-  Future<void> loadMateria() async {
+  Future<void> loadMateria(String curso) async {
     print("Carga de list<Materia>");
-    final _mat = await _retoAPI.getMateriasReto("PrimeroTT");
+    final _mat = await _retoAPI.getMateriasReto(curso);
     _materias = _mat
         .map(
           (materia) => Materia(

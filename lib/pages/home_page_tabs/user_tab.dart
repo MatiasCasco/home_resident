@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:home_resident/api/account_api.dart';
 import 'package:home_resident/models/recover_cuestionary_list.dart';
+import 'package:home_resident/models/recover_questions_list.dart';
 import 'package:home_resident/pages/splash_page_get.dart';
 import 'package:home_resident/pages/welcome_ranking.dart';
 import 'package:shimmer/shimmer.dart';
@@ -81,6 +82,7 @@ class _UserTabState extends State<UserTab> {
     await Future.delayed(Duration(seconds: 3));
   }*/
   String nameCurso;
+  RecoverQuestionsList recover = Get.put(RecoverQuestionsList());
   @override
   Widget build(BuildContext context) {
 
@@ -119,13 +121,25 @@ class _UserTabState extends State<UserTab> {
     );*/
   }
 
+  Future<void> espera() async {
+    await Future.delayed(Duration(seconds: 3));
+  }
+
   @override
   void initState() {
     nameCurso = widget.nameCurso;
+    //recover.loadMateria(nameCurso);
+    //espera();
     /*Future<void> cargaRanking() async {
       await Future.delayed(Duration(seconds: 3));
     }
     recover.loadRanking(77);
     Get.to(SplashPageGet(), arguments: {"Page":"WelcomeRanking", "Curso": idCurso});*/
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    //recover.loadMateria(nameCurso);
+    //espera();
   }
 }

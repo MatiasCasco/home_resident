@@ -92,6 +92,10 @@ flutter:
     - assets/sound/correcto.mp3
     - assets/sound/error.mp3
     - assets/sound/finish.mp3
+    - assets/sound/bien.m4a
+    - assets/sound/mal.m4a
+    - assets/sound/bien1.ogg
+    - assets/sound/mal1.ogg
   #  - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

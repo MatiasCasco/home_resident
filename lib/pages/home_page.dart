@@ -22,28 +22,41 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   RecoverQuestionsList recover = Get.put(RecoverQuestionsList());
   int _currentPage = 0;
+  int idA;
+  String Curso;
   @override
   void initState() {
     super.initState();
-    recover.loadMateria();
+    recuperar();
+    //recover.loadMateria(Curso);
   }
 
   @override
   void dispose() {
     super.dispose();
   }
+
+  Future<int> recuperar() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    idA =  prefs.getInt("Alumno");
+    Curso = prefs.getString("Curso");
+    recover.loadMateria(Curso);
+  }
+
   @override
   Widget build(BuildContext context) {
-    int id = ModalRoute.of(context).settings.arguments;
-
+    int id = idA;
+    String curso = Curso;
+    //int id = ModalRoute.of(context).settings.arguments;
     if(id == null) {
       id = Get.arguments as int;
     }
     print("Este es la prueba: $id");
+    print("Este es el curso: $curso");
     final _menu =  [ // Lista precargada
       BottomMenuItem(iconPath: "assets/icons/menu.svg", label: "Incio", content: MenuTab(idAlumno: id)),
-      BottomMenuItem(iconPath: "assets/icons/history.svg", label: "Historial", content: HistorialTab(idAlumno: id)),
-      BottomMenuItem(iconPath: "assets/icons/user.svg", label: "Usuarios", content: UserTab(nameCurso: "PrimeroTT")),
+      BottomMenuItem(iconPath: "assets/icons/history.svg", label: "Historial", content: HistorialTab(idAlumno: id,nameCurso: curso,)),
+      BottomMenuItem(iconPath: "assets/icons/user.svg", label: "Usuarios", content: UserTab(nameCurso: curso)),
       BottomMenuItem(iconPath: "assets/icons/adjust.svg", label: "Ajuste", content: AjusteTab())
     ];
     print('Identificador del alumno: '+ id.toString());

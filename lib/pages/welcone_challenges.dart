@@ -8,7 +8,8 @@ import 'package:home_resident/utils/constants.dart';
 
 class WelcomeChallenges extends StatelessWidget {
   int id;
-  WelcomeChallenges({this.id});
+  String curso;
+  WelcomeChallenges({this.id, this.curso});
   @override
   Widget build(BuildContext context) {
     RecoverQuestionsList recover = Get.put(RecoverQuestionsList());
@@ -37,8 +38,8 @@ class WelcomeChallenges extends StatelessWidget {
                         Navigator.push(context, route);
                       },*/
                       onTap: () {
-                        recover.loadMateria();
-                        Get.to(SplashPageGet(), arguments: {"Page":"ChooseMatter", "Alumno": id});
+                        recover.loadMateria(curso);
+                        Get.off(SplashPageGet(), arguments: {"Page":"ChooseMatter", "Alumno": id, "Curso": curso});
                         //Get.to(ChosseMatter());
                        /*  Este es el que anda
                         recover.load();

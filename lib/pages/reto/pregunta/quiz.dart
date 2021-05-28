@@ -12,6 +12,7 @@ class Quiz extends StatelessWidget {
   Widget build(BuildContext context) {
     QuestionsController _controller = Get.put(QuestionsController());
     _controller.alumno = Get.arguments["Alumno"] as int;
+    _controller.materia = Get.arguments["Materia"] as String;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
