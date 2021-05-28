@@ -21,8 +21,8 @@ class _LoginPageState extends State<LoginPage> {
   GlobalKey<FormState> _formKey = GlobalKey();
   bool _isFetching = false;
   String _email = ' ', _password = ' ';
-  int idAlumno = 39;
-  String Curso = "PrimeroTM";
+  int idAlumno = 38;
+  String Curso = "PrimeroTT";
   _submit() async {
     final bool isValid = _formKey.currentState.validate();
     if (isValid) {

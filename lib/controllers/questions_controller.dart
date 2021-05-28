@@ -118,7 +118,7 @@ class QuestionsController extends GetxController
       _numOfCorrectAns++;
       //play.play('sound/correcto.mp3');
       if(materia?.toLowerCase() == "Guarani"?.toLowerCase()){
-        play.play('sound/bien1.ogg');
+        play.play('sound/bien1.mp3');
       } else {
         play.play('sound/correcto.mp3');
       }
@@ -126,7 +126,7 @@ class QuestionsController extends GetxController
       //final play =AudioCache();
       //play.play('sound/error.mp3');
       if(materia?.toLowerCase() == "Guarani"?.toLowerCase()) {
-        play.play('sound/mal1.ogg');
+        play.play('sound/mal1.mp3');
       } else {
         play.play('sound/error.mp3');
       }
