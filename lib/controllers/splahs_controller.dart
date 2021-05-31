@@ -43,7 +43,7 @@ class SplashController extends GetxController {
     }
     if(Get.arguments["Page"] == "ChooseTest") {
       Future.delayed(Duration(seconds: 3),(){
-        Get.off(ChooseTest());
+        Get.off(ChooseTest(), arguments:{"Curso":Get.arguments["Curso"]});
       });
     }
     if(Get.arguments["Page"] == "Rankingnes") {

@@ -10,6 +10,8 @@ class ChooseTest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextStyle style1 = TextStyle(fontSize: 26, color: Colors.redAccent);
+    final TextStyle style2 = TextStyle(fontSize: 22, color: Colors.white);
     final List<Widget> items = List.generate(
         recoverC.cuestionariosOFMateria.length,
         (index) => Container(
@@ -21,16 +23,31 @@ class ChooseTest extends StatelessWidget {
                 color: Colors.transparent,
               ),
               child: TextButton(
-                child: Text(
-                  recoverC.cuestionariosOFMateria[index].idCuestionario.toString(),
-                  style: TextStyle(fontSize: 40, color: Colors.white38),
-                ),
+                child: Column(
+                    children: [
+                      Text('Curso: '+ Get.arguments["Curso"].toString(),
+                        style: style1,
+                      ),
+                      Text('Materia: '+ recoverC.cuestionariosOFMateria[index].nameMateria,
+                        style: style1,
+                      ),
+                      Text('Cuestionario N°'+ (index+1).toString(),
+                        style: style1,
+                      ),
+                      Text('Fecha de inicio: ' + recoverC.cuestionariosOFMateria[index].fechaApertura,
+                        style: style2,
+                      ),
+                      Text('Fecha de cierre: '+ recoverC.cuestionariosOFMateria[index].fechaCierre,
+                        style: style2,
+                      ),
+                    ],
+                  ),
                 onPressed: () {
                   recoverC.loadRanking(recoverC.cuestionariosOFMateria[index].idCuestionario);
                   Get.to(SplashPageGet(), arguments: {"Page":"Ranking"});
                 },
-              ),
-            ));
+            ))
+        );
     return Scaffold(
       body: Stack(
         children: [

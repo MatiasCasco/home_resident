@@ -53,7 +53,7 @@ class Rankignes extends StatelessWidget {
                     ),
                     onPressed: () {
                       recoverC.loadCuestionariosOFMateria(Get.arguments['Curso'], Get.arguments['Materia']);
-                      Get.off(SplashPageGet(), arguments: {"Page": "ChooseTest"});
+                      Get.off(SplashPageGet(), arguments: {"Page": "ChooseTest", "Curso":Get.arguments['Curso']});
                     },
                   ),
                 ),

@@ -14,9 +14,10 @@ class IconsScore extends StatelessWidget {
       child: Row(
         children: [
           SvgPicture.asset(porcentaje - 0 >= 0 ? "assets/icons/start.svg":"assets/icons/startDark.svg",width: 20, height: 15,),
-          SvgPicture.asset(porcentaje - 25 >= 0 ? "assets/icons/start.svg":"assets/icons/startDark.svg",width: 20, height: 15,),
-          SvgPicture.asset(porcentaje - 50 >= 0 ? "assets/icons/start.svg":"assets/icons/startDark.svg",width: 20, height: 15,),
-          SvgPicture.asset(porcentaje - 75 >= 0 ? "assets/icons/start.svg":"assets/icons/startDark.svg",width: 20, height: 15,),
+          SvgPicture.asset(porcentaje - 20 >= 0 ? "assets/icons/start.svg":"assets/icons/startDark.svg",width: 20, height: 15,),
+          SvgPicture.asset(porcentaje - 40 >= 0 ? "assets/icons/start.svg":"assets/icons/startDark.svg",width: 20, height: 15,),
+          SvgPicture.asset(porcentaje - 60 >= 0 ? "assets/icons/start.svg":"assets/icons/startDark.svg",width: 20, height: 15,),
+          SvgPicture.asset(porcentaje - 80 >= 0 ? "assets/icons/start.svg":"assets/icons/startDark.svg",width: 20, height: 15,),
         ],
       ),
     );
