@@ -1,12 +1,15 @@
 import 'package:get/get.dart';
 import 'package:home_resident/models/cuestionario_model.dart';
 import 'package:home_resident/pages/choose_cuestionary.dart';
+import 'package:home_resident/pages/choose_cuestionary_recover.dart';
 import 'package:home_resident/pages/choose_matter.dart';
+import 'package:home_resident/pages/choose_matter_recover.dart';
 import 'package:home_resident/pages/choose_test.dart';
 import 'package:home_resident/pages/cuestionario/cuestionary.dart';
 import 'package:home_resident/pages/rankignes_page.dart';
 import 'package:home_resident/pages/ranking_global_page.dart';
 import 'package:home_resident/pages/ranking_page.dart';
+import 'package:home_resident/pages/recover_cuestionary/comoponents/body_cuestionary_recover.dart';
 import 'package:home_resident/pages/reto/pregunta/quiz.dart';
 import 'package:home_resident/pages/welcome_ranking.dart';
 
@@ -59,6 +62,21 @@ class SplashController extends GetxController {
     if(Get.arguments["Page"] == "RankingGlobal") {
       Future.delayed(Duration(seconds: 3),(){
         Get.off(RankingGlobalM());
+      });
+    }
+    if(Get.arguments["Page"] == "ChooseMatterRecover") {
+      Future.delayed(Duration(seconds: 3),(){
+        Get.off(ChooseMatterRecover(), arguments: {"Alumno": Get.arguments["Alumno"] as int, "Curso":Get.arguments["Curso"]});
+      });
+    }
+    if(Get.arguments["Page"] == "ChooseCuestionaryRecover") {
+      Future.delayed(Duration(seconds: 3),(){
+        Get.off(ChooseCuestionaryRecover(id: Get.arguments["Alumno"] as int));
+      });
+    }
+    if(Get.arguments["Page"] == "BodyCuestionaryRecover") {
+      Future.delayed(Duration(seconds: 3),(){
+        Get.off(BodyCuestionaryRecover());
       });
     }
   }

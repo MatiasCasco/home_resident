@@ -23,6 +23,25 @@ class TestApi {
     }
   }
 
+  Future<List<dynamic>> getTestRecover(int Cuestionario, int Alumno) async {
+    try {
+      final http.Response response = await http.get(
+          api + "/testApi/test/${Cuestionario}/alumno/${Alumno}");
+      print(response.body);
+      if (response.statusCode == 200) {
+        final parsed = jsonDecode(response.body);
+        print("Obtener la estructura de test");
+        print(parsed.runtimeType);
+        return parsed;
+      }
+      print("error ${response.statusCode}");
+      return null;
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
   Future<void> addSelectedAnswer(int idAlumno, int selected) async {
     try {
       final http.Response response = await http.post(api + "/testApi/alumno/${idAlumno}/rta/${selected}");

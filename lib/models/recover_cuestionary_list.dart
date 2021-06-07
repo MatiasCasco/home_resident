@@ -2,6 +2,7 @@ import 'package:home_resident/api/cuestionario_api.dart';
 import 'package:home_resident/api/test_api.dart';
 import 'package:home_resident/models/cuestionario_model.dart';
 
+import 'cuestionary_recover_model.dart';
 import 'puntaje_cuestionario_model.dart';
 import 'question_cuestionary_model.dart';
 import 'ranking_global.dart';
@@ -36,6 +37,24 @@ class RecoverCuestionaryList {
     //print(_questions[1].answer);
     //this._loading = false;
 
+  }
+  /********************************************************************************/
+  List<CuestionaryRecover> _cuestionaryRecover = [];
+  List<CuestionaryRecover> get cuestionaryRecover => this._cuestionaryRecover;
+  Future<void> loadTestRecover(int Cuestionario, int Alumno) async {
+    print("Carga de list<QuestionRecover> del cuestionario resuelto");
+    final _testR = await _testAPI.getTestRecover(Cuestionario, Alumno);
+    _cuestionaryRecover = _testR
+        .map(
+          (questionR) => CuestionaryRecover(
+        idQuestion: questionR['idquestion'],
+        scoreQuestion: questionR['puntoobtenido'],
+        listIdR: questionR['listidR'].cast<int>(),
+      ),
+
+    ).toList();
+    print(_cuestionaryRecover);
+    print("Recuperamos esta pregunta"+_cuestionaryRecover[0].listIdR.toString());
   }
   /********************************************************************************/
   CuestionarioApi _cuestionarioApi = CuestionarioApi();
@@ -135,5 +154,28 @@ class RecoverCuestionaryList {
     ).toList();
     print(_rankingGlobal);
     //print(_cuestionariosResueltos[0].idAlumno);
+  }
+
+  /********************************************************************************/
+  List<Cuestionario> _listTestConPuntaje = [];
+  List<Cuestionario> get listTestConPuntaje => this._listTestConPuntaje;
+
+  Future<void> loadCuestionariosConPuntaje(int alumno, int materia) async {
+    print("Carga la lista de cuestionarios con puntajes");
+    final _listC = await _cuestionarioApi.getTestResueltos(alumno, materia);
+    _listTestConPuntaje = _listC
+        .map(
+          (test) => Cuestionario(
+          idCuestionario: test['idCuestionario'],
+          idMateria: test['idMateria'],
+          nameMateria: test['nombreMateria'],
+          fechaCierre: test['fechaCierre'],
+          fechaApertura: test['fechaInicio'],
+          puntos: test['puntos'],
+          tiempoLimite: test['tiempoLimite'],
+          idCurso:test['idCurso'],
+          nameCurso: test['nombreCurso']),
+    ).toList();
+    print(_listTestConPuntaje.toString());
   }
 }

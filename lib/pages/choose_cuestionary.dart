@@ -41,7 +41,9 @@ class ChooseCuestionary extends StatelessWidget {
           child: TextButton(
             child: Text(
               "Cuestionario N°$index \n"
-              + recover.cuestionarios[index].nameMateria, style: TextStyle(fontSize: 30, color: Colors.brown),
+              + recover.cuestionarios[index].nameMateria
+              + "\n idC: ${recover.cuestionarios[index].idCuestionario}"
+              , style: TextStyle(fontSize: 30, color: Colors.brown),
               //recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white38),
             ),
             onPressed: () {

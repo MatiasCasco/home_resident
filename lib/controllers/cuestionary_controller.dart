@@ -62,7 +62,8 @@ class CuestionaryController extends GetxController
   set puntosCuestionario(int value) {
     _puntosCuestionario = value;
   }
-
+  bool _valor = false;
+  bool get valor => this._valor;
   bool _isAnswered = false;
   bool get isAnswered => this._isAnswered;
   bool _isAnsweredCorrect = false;
@@ -135,6 +136,7 @@ class CuestionaryController extends GetxController
   }
 
   void checkAns() {
+    _valor = true;
     _isAnsweredCorrect = true;
     _animationController.stop();
     for(int i=0; i < questions.length; i++) {
@@ -158,6 +160,9 @@ class CuestionaryController extends GetxController
         } else if(countIncorrect >= 0 && countCorrect > 0){
           questions[i].score = (countCorrect*questions[i].assignedScore/questions[i].answer.length).round()-(countIncorrect*questions[i].assignedScore/questions[i].answer.length*(2/3)).round();
         }
+      }
+      if(questions[i].answer.isEmpty && countCorrect == 0 && countIncorrect == 0){
+        questions[i].score = questions[i].assignedScore;
       }
       _puntos +=  questions[i].score;
       print("puntos de la pregunta $i es : ${questions[i].score}");

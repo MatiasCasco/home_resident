@@ -61,6 +61,25 @@ class CuestionarioApi {
     }
   }
 
+  Future<List<dynamic>> getTestResueltos(int alumno, int materia) async {
+    try {
+      final http.Response response = await http.get(
+          api + "/cuestionarioApi/alumno/${alumno}/materia/${materia}");
+      print(response.body);
+      if (response.statusCode == 200) {
+        final parsed = jsonDecode(response.body);
+        print("Obtener la lista de cuestionarios resueltos por el alumno");
+        print(parsed.runtimeType);
+        return parsed;
+      }
+      print("error ${response.statusCode}");
+      return null;
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
   Future<List<dynamic>> getListCuestionariosResueltos(int idAlumno) async {
     try {
       final http.Response response = await http.get(

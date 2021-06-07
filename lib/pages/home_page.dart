@@ -9,6 +9,7 @@ import 'package:home_resident/widget/my_page_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'home_page_tabs/ajuste_tab.dart';
 import 'home_page_tabs/historial_tab.dart';
+import 'home_page_tabs/historial_tabD.dart';
 import 'home_page_tabs/menu_tab.dart';
 import 'home_page_tabs/user_tab.dart';
 import 'reto/puntaje/score.dart';
@@ -57,7 +58,8 @@ class _HomePageState extends State<HomePage> {
       BottomMenuItem(iconPath: "assets/icons/menu.svg", label: "Incio", content: MenuTab(idAlumno: id)),
       BottomMenuItem(iconPath: "assets/icons/history.svg", label: "Historial", content: HistorialTab(idAlumno: id,nameCurso: curso,)),
       BottomMenuItem(iconPath: "assets/icons/user.svg", label: "Usuarios", content: UserTab(nameCurso: curso)),
-      BottomMenuItem(iconPath: "assets/icons/adjust.svg", label: "Ajuste", content: AjusteTab())
+      BottomMenuItem(iconPath: "assets/icons/adjust.svg", label: "Ajuste", content: AjusteTab()),
+      BottomMenuItem(iconPath: "assets/icons/history.svg", label: "Historias", content: HistorialTabD(idAlumno: id,nameCurso: curso,)),
     ];
     print('Identificador del alumno: '+ id.toString());
     return Scaffold(
