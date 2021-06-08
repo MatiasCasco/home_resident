@@ -11,10 +11,12 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> with AfterLayoutMixin {
-
+  int id;
+  String curso;
   @override
   void initState() {
     super.initState();
+    recuperar();
   }
 
   @override
@@ -22,6 +24,11 @@ class _SplashPageState extends State<SplashPage> with AfterLayoutMixin {
     Future.delayed(Duration(seconds: 3)).then((_){
       this._checkLogin();
     });
+  }
+  Future<void> recuperar() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    id =  prefs.getInt("Alumno");
+    curso = prefs.getString("Curso");
   }
 
   _checkLogin()async{
@@ -33,7 +40,8 @@ class _SplashPageState extends State<SplashPage> with AfterLayoutMixin {
       Navigator.pushReplacementNamed(context, LoginPage.routeName);
     } else {
       //Navigator.pushNamed(context, HomePage.routeName);
-      Navigator.pushReplacementNamed(context, HomePage.routeName);
+      print("para ir a home page desde plash page $id y $curso");
+      Navigator.pushReplacementNamed(context, HomePage.routeName, arguments: {"alumno": id,"curso": curso,});
     }
   }
   @override

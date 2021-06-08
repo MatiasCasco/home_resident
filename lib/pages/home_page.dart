@@ -16,6 +16,11 @@ import 'reto/puntaje/score.dart';
 
 class HomePage extends StatefulWidget {
   static final routeName = "homePage";
+  /*int id;
+  String curso;
+
+  HomePage({this.id, this.curso});*/
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -27,6 +32,8 @@ class _HomePageState extends State<HomePage> {
   String Curso;
   @override
   void initState() {
+    /*idA = widget.id;
+    Curso = widget.curso;*/
     super.initState();
     recuperar();
     //recover.loadMateria(Curso);
@@ -37,7 +44,7 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  Future<int> recuperar() async {
+  Future<void> recuperar() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     idA =  prefs.getInt("Alumno");
     Curso = prefs.getString("Curso");
@@ -46,16 +53,29 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    int id = idA;
-    String curso = Curso;
-    //int id = ModalRoute.of(context).settings.arguments;
-    if(id == null) {
-      id = Get.arguments as int;
+    int id;
+    String curso;
+    Map<String, dynamic> args = ModalRoute.of(context).settings.arguments;
+    if(!args.isEmpty) {
+      id = args["alumno"] as int;
+      curso = args["curso"].toString();
+    } else {
+      recuperar();
+      id = idA;
+      curso = Curso;
     }
+
+    /*int id = idA;
+    String curso = Curso;*/
+    //int id = ModalRoute.of(context).settings.arguments;
+    /*if(id == null) {
+      id = idA;
+      curso = Curso;
+    }*/
     print("Este es la prueba: $id");
     print("Este es el curso: $curso");
     final _menu =  [ // Lista precargada
-      BottomMenuItem(iconPath: "assets/icons/menu.svg", label: "Incio", content: MenuTab(idAlumno: id)),
+      BottomMenuItem(iconPath: "assets/icons/menu.svg", label: "Incio", content: MenuTab(idAlumno: id, curso: curso,)),
       BottomMenuItem(iconPath: "assets/icons/history.svg", label: "Historial", content: HistorialTab(idAlumno: id,nameCurso: curso,)),
       BottomMenuItem(iconPath: "assets/icons/user.svg", label: "Usuarios", content: UserTab(nameCurso: curso)),
       BottomMenuItem(iconPath: "assets/icons/adjust.svg", label: "Ajuste", content: AjusteTab()),

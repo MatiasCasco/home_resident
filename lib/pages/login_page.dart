@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   GlobalKey<FormState> _formKey = GlobalKey();
   bool _isFetching = false;
   String _email = ' ', _password = ' ';
-  int idAlumno = 40;
+  int idAlumno = 37;
   String Curso = "PrimeroTT";
   _submit() async {
     final bool isValid = _formKey.currentState.validate();
@@ -34,10 +34,11 @@ class _LoginPageState extends State<LoginPage> {
           _password); // como login retorna un bool a futuro usamos await
       if (isOk) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
+        print("Esto es login page");
         await prefs.setBool("wasLogin", true);
         await prefs.setString("Curso", Curso);
         await prefs.setInt("Alumno", idAlumno);
-        Navigator.pushReplacementNamed(context, HomePage.routeName, arguments: idAlumno);
+        Navigator.pushReplacementNamed(context, HomePage.routeName, arguments: {"alumno": idAlumno,"curso": Curso,});
       } else {
         setState(() {
           _isFetching = false;

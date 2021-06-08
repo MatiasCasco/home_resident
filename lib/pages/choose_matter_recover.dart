@@ -26,7 +26,7 @@ class ChooseMatterRecover extends StatelessWidget {
             onPressed: () {
               recoverC.loadCuestionariosConPuntaje(Get.arguments['Alumno'] as int, recover.materias[index].idMateria);
               //recoverC.loadCuestionariosResueltos(Get.arguments["Alumno"]);
-              Get.to(SplashPageGet(), arguments: {"Page":"ChooseCuestionaryRecover", "Alumno": Get.arguments["Alumno"]});
+              Get.off(SplashPageGet(), arguments: {"Page":"ChooseCuestionaryRecover", "Alumno": Get.arguments["Alumno"]});
             },
           ),
         ));
