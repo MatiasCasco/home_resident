@@ -87,6 +87,7 @@ flutter:
     - assets/DefaultImage.png
     - assets/notAvailable.png
     - assets/asignaturas.png
+    - assets/student.png
     - assets/icons/start.svg
     - assets/icons/startDark.svg
     - assets/sound/correcto.mp3
