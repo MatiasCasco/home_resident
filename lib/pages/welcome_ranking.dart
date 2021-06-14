@@ -26,7 +26,7 @@ class WelcomeRanking extends StatelessWidget {
           ),
           //color: Colors.amber,
           child: TextButton(
-            child: Text(recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white38),),
+            child: Text(recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white),),
             onPressed: () {
               /* Asi seguir los comentarios para armar ranking con profesor en su propia app
               recoverC.loadRankingGlobal(nameCurso, recover.materias[index].nameMateria);

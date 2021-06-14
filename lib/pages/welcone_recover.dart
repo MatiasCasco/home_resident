@@ -5,6 +5,7 @@ import 'package:home_resident/models/recover_cuestionary_list.dart';
 import 'package:home_resident/models/recover_questions_list.dart';
 import 'package:home_resident/pages/splash_page_get.dart';
 import 'package:home_resident/utils/constants.dart';
+import 'package:websafe_svg/websafe_svg.dart';
 
 
 class WelcomeRecover extends StatelessWidget {
@@ -53,9 +54,16 @@ class WelcomeRecover extends StatelessWidget {
                         decoration: BoxDecoration(
                             gradient: kPrimaryGradient,
                             borderRadius: BorderRadius.all(Radius.circular(12.0))),
-                        child: Text("Buscar Test",
-                          style: Theme.of(context).textTheme.headline6.copyWith(
-                              color: Colors.black),),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text("Buscar Test",
+                              style: Theme.of(context).textTheme.headline6.copyWith(
+                                  color: Colors.black),
+                            ),
+                            WebsafeSvg.asset("assets/icons/buscando.svg", height: sizeIcons),
+                          ],
+                        ),
                       ),
                     ),
                     Spacer(),

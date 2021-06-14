@@ -4,10 +4,10 @@ import 'package:http/http.dart' as http; // Alias
 class CuestionarioApi {
   String api = "http://192.168.0.2:8084/homeApi/rest";
 
-  Future<List<dynamic>> getCuestionariosOFCurso(String nameCurso) async {
+  Future<List<dynamic>> getCuestionariosOFCursoAndMateriaApp(String Curso, String Materia) async {
     try {
       final http.Response response = await http.get(
-          api + "/cuestionarioApi/cuestionariosOFCurso/${nameCurso}");
+          api + "/cuestionarioApi/curso/${Curso}/materia/${Materia}");
       print(response.body);
       if (response.statusCode == 200) {
         final parsed = jsonDecode(response.body);

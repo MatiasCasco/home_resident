@@ -75,11 +75,11 @@ class _HomePageState extends State<HomePage> {
     print("Este es la prueba: $id");
     print("Este es el curso: $curso");
     final _menu =  [ // Lista precargada
-      BottomMenuItem(iconPath: "assets/icons/menu.svg", label: "Incio", content: MenuTab(idAlumno: id, curso: curso,)),
-      BottomMenuItem(iconPath: "assets/icons/history.svg", label: "Historial", content: HistorialTab(idAlumno: id,nameCurso: curso,)),
-      BottomMenuItem(iconPath: "assets/icons/user.svg", label: "Usuarios", content: UserTab(nameCurso: curso)),
+      BottomMenuItem(iconPath: "assets/icons/smartphoneBlack.svg", label: "Reto", content: MenuTab(idAlumno: id, curso: curso,)),
+      BottomMenuItem(iconPath: "assets/icons/examen.svg", label: "Test", content: HistorialTab(idAlumno: id,nameCurso: curso,)),
+      BottomMenuItem(iconPath: "assets/icons/user.svg", label: "Ranking", content: UserTab(nameCurso: curso)),
+      BottomMenuItem(iconPath: "assets/icons/history.svg", label: "Historial", content: HistorialTabD(idAlumno: id,nameCurso: curso,)),
       BottomMenuItem(iconPath: "assets/icons/adjust.svg", label: "Ajuste", content: AjusteTab()),
-      BottomMenuItem(iconPath: "assets/icons/history.svg", label: "Historias", content: HistorialTabD(idAlumno: id,nameCurso: curso,)),
     ];
     print('Identificador del alumno: '+ id.toString());
     return Scaffold(

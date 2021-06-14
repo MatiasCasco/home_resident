@@ -13,3 +13,4 @@ const kPrimaryGradient = LinearGradient(
 );
 
 const double kDefaultPadding = 12.0;
+const double sizeIcons = 35.0;

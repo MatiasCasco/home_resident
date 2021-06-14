@@ -53,7 +53,8 @@ class ProgressBarC extends StatelessWidget {
                       Text(
                           "${controller.countH} hr "
                           +"${controller.countM} min "
-                          +"${controller.countS} sec"
+                          +"${controller.countS} sec",
+                          style: TextStyle(color: Colors.purpleAccent),
                       ),
                       WebsafeSvg.asset("assets/icons/clock.svg"),
                     ],

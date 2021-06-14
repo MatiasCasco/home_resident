@@ -5,14 +5,12 @@ import 'package:home_resident/controllers/cuestionary_controller.dart';
 import 'package:home_resident/models/cuestionario_model.dart';
 import 'package:home_resident/models/recover_cuestionary_list.dart';
 import 'package:home_resident/utils/dialogs.dart';
-
 import 'splash_page_get.dart';
 
 class ChooseCuestionary extends StatelessWidget {
   RecoverCuestionaryList recover = Get.put(RecoverCuestionaryList());
   CuestionaryController controller = Get.put(CuestionaryController());
   int id;
-
   ChooseCuestionary({this.id});
 
   @override
@@ -39,12 +37,22 @@ class ChooseCuestionary extends StatelessWidget {
           ),
           //color: Colors.amber,
           child: TextButton(
-            child: Text(
-              "Cuestionario N°$index \n"
-              + recover.cuestionarios[index].nameMateria
-              + "\n idC: ${recover.cuestionarios[index].idCuestionario}"
-              , style: TextStyle(fontSize: 30, color: Colors.brown),
-              //recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white38),
+            child: Column(
+              children: [
+                Text(
+                  "Cuestionario N°$index \n"
+                  + recover.cuestionarios[index].nameMateria
+                  + "\n idC: ${recover.cuestionarios[index].idCuestionario}"
+                  , style: TextStyle(fontSize: 30, color: Colors.green),
+                  //recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white38),
+                ),
+                Text(
+                   "Puntos: ${recover.cuestionarios[index].puntos}"
+                    + "\n Fecha Cierre: ${recover.cuestionarios[index].fechaCierre}"
+                  , style: TextStyle(fontSize: 20, color: Colors.teal),
+                  //recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white38),
+                ),
+              ],
             ),
             onPressed: () {
               //controller.alumno = id;
@@ -73,15 +81,16 @@ class ChooseCuestionary extends StatelessWidget {
           CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
-                iconTheme: IconThemeData(color: Colors.black, size: 25 ),
-                backgroundColor: Colors.teal,
+                title: Text('Seleccionar Cuestionario', style: TextStyle(fontSize:20, color: Colors.black87,),),
+                iconTheme: IconThemeData(color: Colors.black, size: 25),
+                backgroundColor: /*Colors.teal*/Colors.white,
                 //floating: true,
                 pinned: true,
                 expandedHeight: 300,
                 flexibleSpace: FlexibleSpaceBar(
                   centerTitle: false,
-                  title: Text('Seleccionar Cuestionario a resolver', style: TextStyle(fontSize:30, color: Colors.black87,),),
-                  //background: Image.asset("assets/asignaturas.png", fit: BoxFit.fitWidth,),
+                  //title: Text('Seleccionar Cuestionario a resolver', style: TextStyle(fontSize:30, color: Colors.black87,),),
+                  background: Image.asset("assets/test1.jpg", fit: BoxFit.cover,),
                 ),
                 //Image.asset("assets/asignaturas.png", fit: BoxFit.fitWidth,),
               ),

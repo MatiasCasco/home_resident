@@ -1,7 +1,6 @@
 import 'package:home_resident/api/cuestionario_api.dart';
 import 'package:home_resident/api/test_api.dart';
 import 'package:home_resident/models/cuestionario_model.dart';
-
 import 'cuestionary_recover_model.dart';
 import 'puntaje_cuestionario_model.dart';
 import 'question_cuestionary_model.dart';
@@ -61,9 +60,9 @@ class RecoverCuestionaryList {
   List<Cuestionario> _cuestionarios = [];
   List<Cuestionario> get cuestionarios => this._cuestionarios;
 
-  Future<void> loadCuestionarios(String nameCurso) async {
-    print("Carga de list<Cuestionario>");
-    final _listCuestionario = await _cuestionarioApi.getCuestionariosOFCurso(nameCurso);
+  Future<void> loadCuestionariosOFMateriaAndCurso(String Curso, String Materia) async {
+    print("Carga de list<Cuestionario> en fecha que pertenece a un cuestionario de una materia");
+    final _listCuestionario = await _cuestionarioApi.getCuestionariosOFCursoAndMateriaApp(Curso, Materia);
     _cuestionarios = _listCuestionario
         .map(
           (cuestionary) => Cuestionario(
@@ -77,7 +76,7 @@ class RecoverCuestionaryList {
               fechaCierre: cuestionary['fechaCierre'],
               tiempoLimite: cuestionary['tiempoLimite']),
     ).toList();
-    print(_cuestionarios);
+    print(_cuestionarios.length);
   }
 
   List<Cuestionario> _cuestionariosOFMateria = [];

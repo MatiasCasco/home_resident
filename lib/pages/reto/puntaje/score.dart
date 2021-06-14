@@ -25,7 +25,7 @@ class Score extends StatelessWidget {
                 style: Theme.of(context)
                 .textTheme
                 .headline3
-                .copyWith(color: kSecondaryColor),
+                .copyWith(color: Colors.white),
               ),
               Spacer(),
               Text(
@@ -34,7 +34,7 @@ class Score extends StatelessWidget {
                 style: Theme.of(context)
                 .textTheme
                 .headline4
-                .copyWith(color:  kSecondaryColor),
+                .copyWith(color: Colors.white),
               ),
               Spacer(flex: 3,),
             ],

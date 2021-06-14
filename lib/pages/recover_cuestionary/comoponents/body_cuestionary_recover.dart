@@ -23,23 +23,24 @@ class BodyCuestionaryRecover extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: kDefaultPadding),
                 Obx(
                       () {
                         _cuestionaryController.Total();
                         return Text.rich(TextSpan(
-                            text: "Puntos: ${recover
+                            text: " Puntos por pregunta: ${recover
                                 .cuestionaryRecover[(_cuestionaryController
                                 .questionNumber.value - 1)]
                                 .scoreQuestion}/${_cuestionaryController
                                 .questions[(_cuestionaryController
                                 .questionNumber.value - 1)].assignedScore}"
-                                + " Total: ${_cuestionaryController
+                                + "\n \n Total de puntos: ${_cuestionaryController
                                     .puntosCuestionario}/${_cuestionaryController.puntos}",
                             style: Theme
                                 .of(context)
                                 .textTheme
-                                .headline4
-                                .copyWith(color: kSecondaryColor)
+                                .headline5
+                                .copyWith(color: Colors.white)
                         ));
                       }
                 ),
@@ -51,7 +52,7 @@ class BodyCuestionaryRecover extends StatelessWidget {
                         () => Text.rich(
                       TextSpan(
                         text:
-                        "Question ${_cuestionaryController.questionNumber.value}",
+                        "Pregunta ${_cuestionaryController.questionNumber.value}",
                         style: Theme.of(context)
                             .textTheme
                             .headline4

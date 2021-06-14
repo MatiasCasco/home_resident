@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,11 +22,11 @@ class ChosseMatter extends StatelessWidget {
               ),
               //color: Colors.amber,
               child: TextButton(
-                            child: Text(recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white38),),
-                            onPressed: () {
-                              recover.load(recover.materias[index].nameMateria, Get.arguments["Curso"]);
-                              Get.to(SplashPageGet(),arguments: {"Page":"Quiz","Alumno": Get.arguments["Alumno"], "Materia": recover.materias[index].nameMateria, "Curso":Get.arguments["Curso"]});
-                            },
+                child: Text(recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white),),
+                onPressed: () {
+                  recover.load(recover.materias[index].nameMateria, Get.arguments["Curso"]);
+                  Get.to(SplashPageGet(),arguments: {"Page":"Quiz","Alumno": Get.arguments["Alumno"], "Materia": recover.materias[index].nameMateria, "Curso":Get.arguments["Curso"]});
+                  },
               ),
             ));
     return Scaffold(
@@ -37,6 +36,7 @@ class ChosseMatter extends StatelessWidget {
           CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
+                title: Text('Seleccionar Materia', style: TextStyle(fontSize:20, color: Colors.black87,),),
                 iconTheme: IconThemeData(color: Colors.black, size: 25 ),
                 backgroundColor: Colors.teal,
                 //floating: true,
@@ -45,8 +45,8 @@ class ChosseMatter extends StatelessWidget {
                 expandedHeight: 300,
                 flexibleSpace: FlexibleSpaceBar(
                   centerTitle: false,
-                  title: Text('Seleccionar Materia', style: TextStyle(fontSize:30, color: Colors.black87,),),
-                  background: Image.asset("assets/asignaturas.png", fit: BoxFit.fitWidth,),
+                  //title: Text('Seleccionar Materia', style: TextStyle(fontSize:30, color: Colors.black87,),),
+                  background: Image.asset("assets/asignaturas.jpeg", fit: BoxFit.cover,),
                 ),
                 //Image.asset("assets/asignaturas.png", fit: BoxFit.fitWidth,),
               ),

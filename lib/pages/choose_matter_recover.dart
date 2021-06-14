@@ -22,9 +22,9 @@ class ChooseMatterRecover extends StatelessWidget {
           ),
           //color: Colors.amber,
           child: TextButton(
-            child: Text(recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white38),),
+            child: Text(recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white),),
             onPressed: () {
-              recoverC.loadCuestionariosConPuntaje(Get.arguments['Alumno'] as int, recover.materias[index].idMateria);
+              recoverC.loadCuestionariosConPuntaje(Get.arguments['Alumno'] as int, recover.materias[index].idMateria as int);
               //recoverC.loadCuestionariosResueltos(Get.arguments["Alumno"]);
               Get.off(SplashPageGet(), arguments: {"Page":"ChooseCuestionaryRecover", "Alumno": Get.arguments["Alumno"]});
             },
@@ -37,16 +37,17 @@ class ChooseMatterRecover extends StatelessWidget {
           CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
+                title: Text('Seleccionar Materia', style: TextStyle(fontSize:20, color: Colors.black87,),),
                 iconTheme: IconThemeData(color: Colors.black, size: 25 ),
-                backgroundColor: Colors.teal,
+                backgroundColor: Colors.white,
                 //floating: true,
                 pinned: true,
                 //title: Center(child: Text('Seleccionar Materia', style: TextStyle(fontSize:40, color: Colors.black87),)),
                 expandedHeight: 300,
                 flexibleSpace: FlexibleSpaceBar(
                   centerTitle: false,
-                  title: Text('Seleccionar Materia', style: TextStyle(fontSize:30, color: Colors.black87,),),
-                  background: Image.asset("assets/asignaturas.png", fit: BoxFit.fitWidth,),
+                  //title: Text('Seleccionar Materia', style: TextStyle(fontSize:30, color: Colors.black87,),),
+                  background: Image.asset("assets/test.jpeg",),
                 ),
                 //Image.asset("assets/asignaturas.png", fit: BoxFit.fitWidth,),
               ),

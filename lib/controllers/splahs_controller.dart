@@ -4,6 +4,7 @@ import 'package:home_resident/pages/choose_cuestionary.dart';
 import 'package:home_resident/pages/choose_cuestionary_recover.dart';
 import 'package:home_resident/pages/choose_matter.dart';
 import 'package:home_resident/pages/choose_matter_recover.dart';
+import 'package:home_resident/pages/choose_matter_test.dart';
 import 'package:home_resident/pages/choose_test.dart';
 import 'package:home_resident/pages/cuestionario/cuestionary.dart';
 import 'package:home_resident/pages/rankignes_page.dart';
@@ -27,6 +28,11 @@ class SplashController extends GetxController {
     if(Get.arguments["Page"] == "ChooseMatter") {
       Future.delayed(Duration(seconds: 3),(){
         Get.off(ChosseMatter(), arguments: {"Alumno": Get.arguments["Alumno"] as int, "Curso":Get.arguments["Curso"]});
+      });
+    }
+    if(Get.arguments["Page"] == "ChooseMatterTest") {
+      Future.delayed(Duration(seconds: 3),(){
+        Get.off(ChooseMatterTest(), arguments: {"Alumno": Get.arguments["Alumno"] as int, "Curso":Get.arguments["Curso"]});
       });
     }
     if(Get.arguments["Page"] == "Cuestionary") {

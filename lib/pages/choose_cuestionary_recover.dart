@@ -20,15 +20,21 @@ class ChooseCuestionaryRecover extends StatelessWidget {
           margin: EdgeInsets.all(20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            border: Border.all(width: 10, color: Colors.white38),
+            border: Border.all(width: 10, color: Colors.brown),
             color: Colors.transparent,
           ),
           //color: Colors.amber,
           child: TextButton(
-            child: Text(
-              "Cuestionario N°${(index+1)}"
-                  + recover.listTestConPuntaje[index].nameMateria +  recover.listTestConPuntaje[index].idCuestionario.toString(), style: TextStyle(fontSize: 30, color: Colors.brown),
-              //recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white38),
+            child: Column(
+              children: [
+                Text(
+                  "Cuestionario N°${(index+1)} \n" + recover.listTestConPuntaje[index].nameMateria, style: TextStyle(fontSize: 30, color: Colors.teal),
+                ),
+                Text("Puntos: ${recover.listTestConPuntaje[index].puntos}", style: TextStyle(fontSize: 26, color: Colors.green),),
+                Text(
+                  "Fecha Apertura: ${recover.listTestConPuntaje[index].fechaApertura}\n" + "Fecha Cierre: ${recover.listTestConPuntaje[index].fechaCierre}" , style: TextStyle(fontSize: 18, color: Colors.cyanAccent),
+                ),
+              ],
             ),
             onPressed: () {
                   recover.loadTestRecover(recover.listTestConPuntaje[index].idCuestionario, id);
@@ -44,15 +50,16 @@ class ChooseCuestionaryRecover extends StatelessWidget {
           CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
+                title: Text('Seleccionar Cuestionario', style: TextStyle(fontSize:20, color: Colors.black87,),),
                 iconTheme: IconThemeData(color: Colors.black, size: 25 ),
-                backgroundColor: Colors.teal,
+                backgroundColor: Colors.white,
                 //floating: true,
                 pinned: true,
                 expandedHeight: 300,
                 flexibleSpace: FlexibleSpaceBar(
                   centerTitle: false,
-                  title: Text('Seleccionar Cuestionario a resolver', style: TextStyle(fontSize:30, color: Colors.black87,),),
-                  //background: Image.asset("assets/asignaturas.png", fit: BoxFit.fitWidth,),
+                  //title: Text('Seleccionar Cuestionario a resolver', style: TextStyle(fontSize:30, color: Colors.black87,),),
+                  background: Image.asset("assets/test.jpeg",),
                 ),
                 //Image.asset("assets/asignaturas.png", fit: BoxFit.fitWidth,),
               ),

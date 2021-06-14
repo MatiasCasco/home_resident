@@ -84,10 +84,20 @@ flutter:
     - assets/icons/fondo.png
     - assets/icons/menu-line.svg
     - assets/icons/imageNotAvailable.svg
+    - assets/icons/examen.svg
+    - assets/icons/smartphoneBlack.svg
+    - assets/icons/retoBlack.svg
+    - assets/icons/buscando.svg
     - assets/DefaultImage.png
     - assets/notAvailable.png
     - assets/asignaturas.png
     - assets/student.png
+    - assets/test1.jpg
+    - assets/test2.jpg
+    - assets/Asignatura.png
+    - assets/asignaturas.jpeg
+    - assets/seleccionar.jpeg
+    - assets/test.jpeg
     - assets/icons/start.svg
     - assets/icons/startDark.svg
     - assets/sound/correcto.mp3

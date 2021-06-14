@@ -23,9 +23,9 @@ class Ranking extends StatelessWidget {
             itemBuilder: (context, index){
             return ListTile(
               leading: Icon(Icons.account_circle_rounded, size: 50, color:  Colors.lightBlue,),
-              title: Center(child: Text(recover.ranking[index].nombre + ' ' + recover.ranking[index].apellido, style: TextStyle(fontSize: 20),)),
-              subtitle: Text("Puntos: "+recover.ranking[index].puntaje.toString(), style: TextStyle(fontSize: 15)),
-              trailing: SvgPicture.asset("assets/icons/menu-line.svg", width: 50, color: Colors.lightBlue,),
+              title: Center(child: Text(recover.ranking[index].nombre + ' ' + recover.ranking[index].apellido, style: TextStyle(fontSize: 20, color: Colors.purpleAccent),)),
+              subtitle: Text("Puntos: "+recover.ranking[index].puntaje.toString(), style: TextStyle(fontSize: 15, color: Colors.white)),
+              trailing: SvgPicture.asset("assets/icons/menu-line.svg", width: 50, color: Colors.teal,),
               isThreeLine: false,
               dense: false,
             );

@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:home_resident/models/recover_cuestionary_list.dart';
+import 'package:home_resident/models/recover_questions_list.dart';
 import 'package:home_resident/pages/splash_page_get.dart';
 import 'package:home_resident/utils/constants.dart';
+import 'package:websafe_svg/websafe_svg.dart';
 
 
 class WelcomeCuestionary extends StatelessWidget {
@@ -14,6 +16,7 @@ class WelcomeCuestionary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RecoverCuestionaryList recover = Get.put(RecoverCuestionaryList());
+    RecoverQuestionsList recuperar = Get.put(RecoverQuestionsList());
     return Scaffold(
       body: Stack(
         children: [
@@ -38,10 +41,12 @@ class WelcomeCuestionary extends StatelessWidget {
                         Navigator.push(context, route);
                       },*/
                       onTap: () {
-                        print("id alumno en welcome $id");
-                        recover.loadCuestionarios(curso);
+                        print("id alumno en welcome $id y el $curso");
+                        recuperar.loadMateria(curso);
+                        Get.to(SplashPageGet(), arguments: {"Page":"ChooseMatterTest", "Alumno": id, "Curso": curso});
+                        /*recover.loadCuestionarios(curso);
                         recover.loadCuestionariosResueltos(id);
-                        Get.to(SplashPageGet(), arguments: {"Page":"ChooseCuestionary", "Alumno": id});
+                        Get.to(SplashPageGet(), arguments: {"Page":"ChooseCuestionary", "Alumno": id});*/
                       },
                       child: Container(
                         width: double.infinity,
@@ -50,9 +55,16 @@ class WelcomeCuestionary extends StatelessWidget {
                         decoration: BoxDecoration(
                             gradient: kPrimaryGradient,
                             borderRadius: BorderRadius.all(Radius.circular(12.0))),
-                        child: Text("Comenzar Test",
-                          style: Theme.of(context).textTheme.headline6.copyWith(
-                              color: Colors.black),),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text("Comenzar Test",
+                              style: Theme.of(context).textTheme.headline6.copyWith(
+                                  color: Colors.black),
+                            ),
+                            WebsafeSvg.asset("assets/icons/clock.svg", height: sizeIcons, color: Colors.white),
+                          ],
+                        ),
                       ),
                     ),
                     Spacer(),
