@@ -6,6 +6,7 @@ import 'home_page.dart';
 import 'login_page.dart';
 
 class SplashPage extends StatefulWidget {
+  static final routeName = "Splash";
   @override
   _SplashPageState createState() => _SplashPageState();
 }
@@ -32,6 +33,7 @@ class _SplashPageState extends State<SplashPage> with AfterLayoutMixin {
   }
 
   _checkLogin()async{
+    recuperar();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final bool wasLogin = prefs.getBool("wasLogin");
     print("wasLogin $wasLogin");

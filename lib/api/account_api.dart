@@ -126,7 +126,7 @@ class AccountApi {
           return true;
         }
         if (parsed['codError']=="0001"){
-          await prFr.setString("Error","Usuario no registrado");
+          await prFr.setString("Error","Usuario no registrado para el uso de la app");
           return false;
         }
         await prFr.setString("Error","Error de password");
@@ -160,6 +160,39 @@ class AccountApi {
         final Map<String, dynamic> data1 = Map<String, dynamic>();
         data1['alumno'] = parsed['idP'];
         data1['curso'] = parsed['nombreCurso'];
+        data1['rol'] = parsed['rol'];
+        return data1;
+      }else{
+        return null;
+      }
+    }catch(e){
+      print(e);//tal vez guardar en prfs para imprimir
+      return null;
+    }
+  }
+
+  Future<Map<String, dynamic>> updatePassword(int id , String passwordOld, String passwordNew) async {
+    Uri uri=new Uri(scheme: 'http',host: '192.168.0.2', path: 'proyectoapiMySql/rest/personapi/password', port: 8084);//funciona
+    try{
+      final http.Response response= await http.post(
+          uri,
+          body: jsonEncode({
+            "rol":3,
+            "password":passwordNew,
+            "passwordOld":passwordOld,
+            "id":id
+          }),
+          headers: {'Content-Type':'application/json'}
+      );
+      print(response.body);
+      if(response.statusCode==200){
+        String body = utf8.decode(response.bodyBytes);
+        //String body = Utf8Decoder().convert(response.bodyBytes);
+        final parsed = jsonDecode(body);
+        final Map<String, dynamic> data1 = Map<String, dynamic>();
+        data1['codigo'] = parsed['codigo'];
+        data1['descripcion'] = parsed['descripcion'];
+        print(data1);
         return data1;
       }else{
         return null;

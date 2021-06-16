@@ -25,7 +25,7 @@ class RetoAPI {
       return null;
     }
   }
-
+// Este lista todas las materias de un curso especifico
   Future<List<dynamic>> getMateriasReto(String nameCurso) async {
     try {
       final http.Response response = await http.get(
@@ -34,6 +34,44 @@ class RetoAPI {
       if (response.statusCode == 200) {
         final parsed = jsonDecode(response.body);
         print("Obtener la estructura de reto");
+        print(parsed.runtimeType);
+        return parsed;
+      }
+      print("error ${response.statusCode}");
+      return null;
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+// Este lista las materias que tienen retos disponibles
+  Future<List<dynamic>> getMateriasRetoD(String nameCurso) async {
+    try {
+      final http.Response response = await http.get(
+          api+"/materiaApi/retos/${nameCurso}");
+      print(response.body);
+      if (response.statusCode == 200) {
+        final parsed = jsonDecode(response.body);
+        print("Obtener la estructura de retos disponibles");
+        print(parsed.runtimeType);
+        return parsed;
+      }
+      print("error ${response.statusCode}");
+      return null;
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+// Este lista las materias que tienen test habilitados
+  Future<List<dynamic>> getMateriasTest(String nameCurso) async {
+    try {
+      final http.Response response = await http.get(
+          api+"/materiaApi/test/${nameCurso}");
+      print(response.body);
+      if (response.statusCode == 200) {
+        final parsed = jsonDecode(response.body);
+        print("Obtener la estructura de test disponibles");
         print(parsed.runtimeType);
         return parsed;
       }

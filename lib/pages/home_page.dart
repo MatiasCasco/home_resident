@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
       BottomMenuItem(iconPath: "assets/icons/examen.svg", label: "Test", content: HistorialTab(idAlumno: id,nameCurso: curso,)),
       BottomMenuItem(iconPath: "assets/icons/user.svg", label: "Ranking", content: UserTab(nameCurso: curso)),
       BottomMenuItem(iconPath: "assets/icons/history.svg", label: "Historial", content: HistorialTabD(idAlumno: id,nameCurso: curso,)),
-      BottomMenuItem(iconPath: "assets/icons/adjust.svg", label: "Ajuste", content: AjusteTab()),
+      BottomMenuItem(iconPath: "assets/icons/adjust.svg", label: "Ajuste", content: AjusteTab(idAlumno: id, curso: curso, rol: 3)),
     ];
     print('Identificador del alumno: '+ id.toString());
     return Scaffold(

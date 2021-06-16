@@ -43,6 +43,39 @@ class RecoverQuestionsList {
     ).toList();
     print(_materias);
     //this._loading = false;
+  }
+  /********************************************************************************/
+  List<Materia> _materiasReto = [];
+  List<Materia> get materiasReto => this._materiasReto;
 
+  Future<void> loadMateriaReto(String curso) async {
+    print("Carga de list<Materia>");
+    final _mat = await _retoAPI.getMateriasRetoD(curso);
+    _materias = _mat
+        .map(
+          (materia) => Materia(
+          idMateria: materia['idMateria'],
+          nameMateria: materia['nombre'],
+          idCurso: materia['idCurso'],
+          nameCurso: materia['nombreCurso']),
+    ).toList();
+    print(_materias);
+  }
+  /********************************************************************************/
+  List<Materia> _materiasTest = [];
+  List<Materia> get materiasTest => this._materiasTest;
+
+  Future<void> loadMateriaTest(String curso) async {
+    print("Carga de list<Materia>");
+    final _mat = await _retoAPI.getMateriasTest(curso);
+    _materias = _mat
+        .map(
+          (materia) => Materia(
+          idMateria: materia['idMateria'],
+          nameMateria: materia['nombre'],
+          idCurso: materia['idCurso'],
+          nameCurso: materia['nombreCurso']),
+    ).toList();
+    print(_materias);
   }
 }

@@ -3,6 +3,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:home_resident/pages/home_page.dart';
 import 'package:home_resident/pages/login_page.dart';
 import 'package:home_resident/pages/splash_page.dart';
+import 'package:home_resident/pages/update_password.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'pages/reto/puntaje/score.dart';
@@ -38,12 +39,10 @@ class MyApp extends StatelessWidget{
           home: SplashPage(),
           routes: {
             // 'homePage': (BuildContext context)=> HomePage(),
-            HomePage.routeName: (BuildContext context) {
-              //recuperar();
-              //print("El valor en la ruta $id Y $curso");
-              return HomePage(/*id: id, curso: curso,*/);
-            },
+            HomePage.routeName: (BuildContext context)=> HomePage(),
             LoginPage.routeName: (_)=> LoginPage(),
+            UpdatePassword.routeName:(_)=> UpdatePassword(),
+            SplashPage.routeName:(_)=> SplashPage(),
             //Score.routeName: (_)=> Score(),
           },
         )

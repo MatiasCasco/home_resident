@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:home_resident/pages/update_password.dart';
 import 'package:home_resident/utils/dialogs.dart';
 import 'package:home_resident/widget/left_right_icon_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../login_page.dart';
 
 class AjusteTab extends StatefulWidget {
+  int idAlumno;
+  String curso;
+  int rol;
+
+  AjusteTab({@required this.idAlumno, @required this.curso,@required this.rol});
+
   @override
   _AjusteTabState createState() => _AjusteTabState();
 }
 
 class _AjusteTabState extends State<AjusteTab> {
+  int id;
+  String curso;
+  int rol;
   _confirm() async{
     final isOk = await Dialogs.Confirm(context,
         title: "Confirmacion Requerida",
@@ -33,7 +43,16 @@ class _AjusteTabState extends State<AjusteTab> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    id = widget.idAlumno;
+    curso = widget.curso;
+    rol =widget.rol;
+  }
+
+  @override
   Widget build(BuildContext context) {
+
     //return Container();
     print("Ajuste"); // la idea se los print es saber cuando se renderiza los tabs
     //return Center(child: Text("Ajuste"),);
@@ -68,8 +87,12 @@ class _AjusteTabState extends State<AjusteTab> {
               LeftRightIconButton(
                 leftIcon: "assets/icons/security.svg",
                 rightContent: SvgPicture.asset("assets/icons/rightArrow.svg", width: 25,),/*SvgPicture.asset("assets/icons/downArrow.svg"),*/
-                label:"Configuraciones de privacidad",
-                onPressed: _confirm,),
+                label:"Cambiar contraseña",
+                onPressed: (){
+                  print("Esto son los parametros pasados por navigator");
+                  print(id.toString() + curso + rol.toString());
+                  Navigator.pushNamed(context, UpdatePassword.routeName, arguments: {"id":id, "curso":curso,"rol":rol},);
+                },),
               LeftRightIconButton(
                 leftIcon: "assets/icons/Bell.svg",
                 rightContent: Text("ACTIVADO", style: TextStyle(color: Colors.blueGrey),),/*SvgPicture.asset("assets/icons/downArrow.svg"),*/

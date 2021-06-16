@@ -8,6 +8,7 @@ import 'package:home_resident/utils/dialogs.dart';
 import 'package:home_resident/widget/my_btn.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'home_page.dart';
+import 'update_password.dart';
 /*
 class LoginPage extends StatefulWidget {
   static final routeName = 'login';
@@ -272,10 +273,16 @@ class _LoginPageState extends State<LoginPage> {
         await prFr.setBool("wasLogin", true);
         int idAlumno = _credencial.data["alumno"] as int;
         String curso = _credencial.data["curso"].toString();
+        int rol = _credencial.data["rol"] as int;
         print("El id del alumno es $idAlumno y el curso es $curso");
         await prFr.setString("Curso", curso);
         await prFr.setInt("Alumno", idAlumno);
-        Navigator.pushReplacementNamed(context, HomePage.routeName, arguments: {"alumno": idAlumno,"curso": curso,});
+        if(rol == 4) {
+          Navigator.pushReplacementNamed(context, UpdatePassword.routeName, arguments: {"id":idAlumno, "curso":curso,"rol":rol},);
+        }else{
+          Navigator.pushReplacementNamed(context, HomePage.routeName, arguments: {"alumno": idAlumno,"curso": curso,});
+        }
+
       }else{
         setState(()  {
           _isFetching=false;
