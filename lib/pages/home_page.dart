@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
       id = args["alumno"] as int;
       curso = args["curso"].toString();
       email = args["email"].toString();
-      name = email = args["name"].toString();
+      name = args["name"].toString();
     } else {
       recuperar();
       id = idA;
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
     print("Este es el curso: $email");
     print("Este es el curso: $name");
     final _menu =  [ // Lista precargada
-      BottomMenuItem(iconPath: "assets/icons/smartphoneBlack.svg", label: "Reto", content: MenuTab(idAlumno: id, curso: curso,)),
+      BottomMenuItem(iconPath: "assets/icons/smartphoneBlack.svg", label: "Reto", content: MenuTab(idAlumno: id, curso: curso, email: email, name: name)),
       BottomMenuItem(iconPath: "assets/icons/examen.svg", label: "Test", content: HistorialTab(idAlumno: id,nameCurso: curso,)),
       BottomMenuItem(iconPath: "assets/icons/user.svg", label: "Ranking", content: UserTab(nameCurso: curso)),
       BottomMenuItem(iconPath: "assets/icons/history.svg", label: "Historial", content: HistorialTabD(idAlumno: id,nameCurso: curso,)),

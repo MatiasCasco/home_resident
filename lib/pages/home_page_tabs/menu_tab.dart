@@ -4,20 +4,22 @@ import '../welcone_challenges.dart';
 
 class MenuTab extends StatefulWidget {
   int idAlumno;
-  String curso;
- MenuTab({@required this.idAlumno, @required this.curso});
+  String curso, email, name;
+ MenuTab({@required this.idAlumno, @required this.curso, @required this.email, @required this.name});
 
   @override
   _MenuTabState createState() => _MenuTabState();
 }
 
 class _MenuTabState extends State<MenuTab> {
-  String Curso;
+  String Curso, email, name;
   int id;
   Future<int> recuperar() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     id =  prefs.getInt("Alumno");
     Curso = prefs.getString("Curso");
+    email = prefs.getString("email");
+    name = prefs.getString("name");
   }
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class _MenuTabState extends State<MenuTab> {
     print(Curso + "Este es el cursooooooooooo");
     //return Center(child: Text("menu"),);
     //recuperar();
-    return WelcomeChallenges(id: id, curso: Curso);
+    return WelcomeChallenges(id: id, curso: Curso, email: email, name: name);
     //return Quiz();
   }
   @override
@@ -35,6 +37,7 @@ class _MenuTabState extends State<MenuTab> {
     recuperar();
     id= widget.idAlumno;
     Curso = widget.curso;
-
+    email = email;
+    name = name;
   }
 }

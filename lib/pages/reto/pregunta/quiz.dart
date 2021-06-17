@@ -24,7 +24,7 @@ class Quiz extends StatelessWidget {
           onPressed: (){
             _controller.back();
             //_controller.onClose();
-            Get.off(HomePage(),  arguments: {"alumno": Get.arguments["Alumno"],"curso":Get.arguments["Curso"],});
+            Get.off(HomePage(),  arguments: {"alumno": Get.arguments["Alumno"],"curso":Get.arguments["Curso"], "email":Get.arguments["email"], "name":Get.arguments["name"],});
           },
           padding: EdgeInsets.all(15),
           child: SvgPicture.asset("assets/icons/back.svg", width: 30,),),

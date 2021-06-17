@@ -9,8 +9,8 @@ import 'package:websafe_svg/websafe_svg.dart';
 
 class WelcomeChallenges extends StatelessWidget {
   int id;
-  String curso;
-  WelcomeChallenges({this.id, this.curso});
+  String curso, email, name;
+  WelcomeChallenges({@required this.id,@required this.curso,@required this.email,@required this.name});
   @override
   Widget build(BuildContext context) {
     RecoverQuestionsList recover = Get.put(RecoverQuestionsList());
@@ -40,7 +40,7 @@ class WelcomeChallenges extends StatelessWidget {
                       },*/
                       onTap: () {
                         recover.loadMateriaReto(curso);
-                        Get.to(SplashPageGet(), arguments: {"Page":"ChooseMatter", "Alumno": id, "Curso": curso});
+                        Get.to(SplashPageGet(), arguments: {"Page":"ChooseMatter", "Alumno": id, "Curso": curso, "email": email, "name": name});
                         //Get.to(ChosseMatter());
                        /*  Este es el que anda
                         recover.load();
