@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:home_resident/models/credencial_model.dart';
 import 'package:home_resident/pages/update_password.dart';
 import 'package:home_resident/utils/dialogs.dart';
 import 'package:home_resident/widget/avatar.dart';
@@ -10,10 +9,8 @@ import '../login_page.dart';
 
 class AjusteTab extends StatefulWidget {
   int idAlumno;
-  String curso;
+  String curso, email, name;
   int rol;
-  String email;
-  String name;
 
   AjusteTab({@required this.idAlumno, @required this.curso,@required this.rol, @required this.email, @required this.name});
 
@@ -23,24 +20,19 @@ class AjusteTab extends StatefulWidget {
 
 class _AjusteTabState extends State<AjusteTab> {
   int id;
-  String curso;
+  String curso, email, name;
   int rol;
-  String email = " ";
-  String name = " ";
   _confirm() async{
     final isOk = await Dialogs.Confirm(context,
         title: "Confirmacion Requerida",
         body: "Desea salir de la app?");
     print("isOK $isOk");
-    if(isOk){
-      _logOut();
-    }
+    if(isOk){_logOut();}
   }
 
   _logOut() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.clear();
-    await prefs.setString("email",email);
     Navigator.pushNamedAndRemoveUntil(context, LoginPage.routeName, (_)=>false);
   }
 
@@ -83,6 +75,7 @@ class _AjusteTabState extends State<AjusteTab> {
                       Avatar(size: 150),
                       TextButton(child: Text(name, style: TextStyle(fontSize: 25, color: Colors.white),),
                         onPressed: (){},),
+
                     ],
                   )
               ),
@@ -90,8 +83,8 @@ class _AjusteTabState extends State<AjusteTab> {
                 leftIcon: "assets/icons/mail.svg",
                 rightContent: Text(email, style: TextStyle(color: Colors.blueGrey),), /*SvgPicture.asset("assets/icons/downArrow.svg"),*/
                 label:"Email",
-                onPressed: (){},
-                //onPressed: _setEmail,
+                //onPressed: _confirm,
+                onPressed: _setEmail,
               ),
               LeftRightIconButton(
                 leftIcon: "assets/icons/security.svg",
@@ -102,7 +95,7 @@ class _AjusteTabState extends State<AjusteTab> {
                   print(id.toString() + curso + rol.toString());
                   Navigator.pushNamed(context, UpdatePassword.routeName, arguments: {"id":id, "curso":curso,"rol":rol},);
                 },),
-             /*LeftRightIconButton(
+              /*LeftRightIconButton(
                 leftIcon: "assets/icons/Bell.svg",
                 rightContent: Text("ACTIVADO", style: TextStyle(color: Colors.blueGrey),),/*SvgPicture.asset("assets/icons/downArrow.svg"),*/
                 label:"Notificaciones Push",

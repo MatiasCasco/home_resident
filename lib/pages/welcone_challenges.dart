@@ -39,7 +39,6 @@ class WelcomeChallenges extends StatelessWidget {
                         Navigator.push(context, route);
                       },*/
                       onTap: () {
-                        //recover.loadMateria(curso); Este era el correcto
                         recover.loadMateriaReto(curso);
                         Get.to(SplashPageGet(), arguments: {"Page":"ChooseMatter", "Alumno": id, "Curso": curso});
                         //Get.to(ChosseMatter());

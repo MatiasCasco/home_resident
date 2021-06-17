@@ -44,7 +44,6 @@ class WelcomeRecover extends StatelessWidget {
                         print("id alumno en welcome $id");
                         //recover.loadCuestionarios(curso);
                         //recover.loadCuestionariosResueltos(id);
-                        //recover.loadMateria(curso);
                         recover.loadMateriaReto(curso);
                         Get.to(SplashPageGet(), arguments: {"Page":"ChooseMatterRecover", "Alumno": id,"Curso":curso});
                       },

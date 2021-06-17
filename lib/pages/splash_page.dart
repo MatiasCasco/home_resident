@@ -44,8 +44,8 @@ class _SplashPageState extends State<SplashPage> with AfterLayoutMixin {
       Navigator.pushReplacementNamed(context, LoginPage.routeName);
     } else {
       //Navigator.pushNamed(context, HomePage.routeName);
-      print("para ir a home page desde plash page $id y $curso");
-      Navigator.pushReplacementNamed(context, HomePage.routeName, arguments: {"alumno": id,"curso": curso, "email": email, "name":name});
+      print("para ir a home page desde plash page $id y $curso y $email y $name");
+      Navigator.pushReplacementNamed(context, HomePage.routeName, arguments: {"alumno": id,"curso": curso, "email": email, "name": name});
     }
   }
   @override

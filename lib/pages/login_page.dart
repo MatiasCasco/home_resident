@@ -254,22 +254,11 @@ class _LoginPageState extends State<LoginPage> {
   bool _isFetching=false;
 
   @override
-  void initState() {
-    super.initState();
-    recuper();
-  }
-
-  @override
   void dispose() {
     // TODO: implement dispose
     _focusNodePassword.dispose();
     super.dispose();
   }
-  recuper() async {
-    SharedPreferences prFr =await SharedPreferences.getInstance();
-    _email = await prFr.getString("email");
-  }
-
   _submit() async {
     bool isValid= _formkey.currentState.validate();//llama a las funciones validators y si pasa todo retorna true
     if (isValid) {
@@ -285,18 +274,17 @@ class _LoginPageState extends State<LoginPage> {
         int idAlumno = _credencial.data["alumno"] as int;
         String curso = _credencial.data["curso"].toString();
         int rol = _credencial.data["rol"] as int;
-        String email =  _credencial.data["email"].toString();
         String name = _credencial.data["name"].toString();
+        String email = _credencial.data["email"].toString();
         print("El id del alumno es $idAlumno y el curso es $curso");
         await prFr.setString("Curso", curso);
         await prFr.setInt("Alumno", idAlumno);
-        await prFr.setString("email",email);
+        await prFr.setString("email", email);
         await prFr.setString("name", name);
-        Future.delayed(Duration(seconds: 2));
         if(rol == 4) {
           Navigator.pushReplacementNamed(context, UpdatePassword.routeName, arguments: {"id":idAlumno, "curso":curso,"rol":rol},);
         }else{
-          Navigator.pushReplacementNamed(context, HomePage.routeName, arguments: {"alumno": idAlumno,"curso": curso, "email": email, "name":name});
+          Navigator.pushReplacementNamed(context, HomePage.routeName, arguments: {"alumno": idAlumno,"curso": curso, "email":email, "name":name});
         }
 
       }else{
@@ -333,7 +321,6 @@ class _LoginPageState extends State<LoginPage> {
     final MediaQueryData media=MediaQuery.of(context);
     final Size size=media.size;
     final EdgeInsets padding=media.padding;
-    recuper();
     return Scaffold(
         body:SafeArea(
           child: Stack(
@@ -373,12 +360,13 @@ class _LoginPageState extends State<LoginPage> {
                                         onFieldSubmitted: (String text){
                                           // _focusNodePassword.nextFocus();
                                         },
-                                        initialValue: _email,
+                                        //initialValue: 'ss02.@gmail.com',
                                         //initialValue: 'ss02.@gmail.com',
                                       ),
                                       SizedBox(height: size.height/44,),
                                       TextFormField(
                                         decoration: InputDecoration(
+
                                             labelText: "Password",
                                             hintText: "*********",
                                             border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),

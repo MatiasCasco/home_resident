@@ -21,7 +21,7 @@ class _AvatarState extends State<Avatar> {
       height: widget.size,
       child: Stack(
         children: <Widget>[
-          SvgPicture.asset('assets/icons/user.svg',width:  widget.size, height:  widget.size, color: Colors.black,),
+          SvgPicture.asset("assets/icons/user.svg", width: widget.size, height: widget.size, color: Colors.black,),
           /*Positioned(
             child: CircleContainer(
                 child: Icon(Icons.edit),

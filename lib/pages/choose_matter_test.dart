@@ -11,7 +11,6 @@ class ChooseMatterTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> items = List.generate(
-        /*recuperar.materias.length,*/
         recuperar.materiasTest.length,
         (index) => Container(
               padding: EdgeInsets.all(20),
@@ -23,7 +22,6 @@ class ChooseMatterTest extends StatelessWidget {
               ),
               child: TextButton(
                 child: Text(
-                  /*recuperar.materias[index].nameMateria,*/
                   recuperar.materiasTest[index].nameMateria,
                   style: TextStyle(fontSize: 40, color: Colors.white),
                 ),
