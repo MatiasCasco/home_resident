@@ -119,10 +119,10 @@ class AccountApi {
         //si todo bie  guardar el id del usuario y el nombre tal vez tambien
         //await prFr.setBool("waslogin", true);
         final  parsed= json.decode(response.body);
-        _changeValue(parsed);
+        //_changeValue(parsed);
         print("login ok ${parsed['idP']}: user: ${parsed['email']}: islog?${parsed['isLog']}");
         if(parsed['isLog']){
-          _changeValue(parsed);
+          //_changeValue(parsed);
           return true;
         }
         if (parsed['codError']=="0001"){
@@ -161,6 +161,8 @@ class AccountApi {
         data1['alumno'] = parsed['idP'];
         data1['curso'] = parsed['nombreCurso'];
         data1['rol'] = parsed['rol'];
+        data1['email'] = parsed['email'];
+        data1['name'] = parsed['name'];
         return data1;
       }else{
         return null;

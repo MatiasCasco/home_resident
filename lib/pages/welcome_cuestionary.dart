@@ -42,7 +42,8 @@ class WelcomeCuestionary extends StatelessWidget {
                       },*/
                       onTap: () {
                         print("id alumno en welcome $id y el $curso");
-                        recuperar.loadMateria(curso);
+                        //recuperar.loadMateria(curso);
+                        recuperar.loadMateriaTest(curso);
                         Get.to(SplashPageGet(), arguments: {"Page":"ChooseMatterTest", "Alumno": id, "Curso": curso});
                         /*recover.loadCuestionarios(curso);
                         recover.loadCuestionariosResueltos(id);

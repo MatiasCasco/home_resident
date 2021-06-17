@@ -123,7 +123,7 @@ class CuestionaryController extends GetxController
 
 
     // start our animation
-    _animationController.forward();
+    _animationController.forward().whenComplete(_complete);
     _pageController = PageController();
   }
 
@@ -239,5 +239,10 @@ class CuestionaryController extends GetxController
       }
     }
     return value;
+  }
+
+  void _complete(){
+    checkAns();
+    cargaBD();
   }
 }

@@ -11,7 +11,7 @@ class ChooseMatterRecover extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> items = List.generate(
-        recover.materias.length,
+        recover.materiasReto.length,
             (index) => Container(
           padding: EdgeInsets.all(20),
           margin: EdgeInsets.all(20),
@@ -22,9 +22,9 @@ class ChooseMatterRecover extends StatelessWidget {
           ),
           //color: Colors.amber,
           child: TextButton(
-            child: Text(recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white),),
+            child: Text(recover.materiasReto[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white),),
             onPressed: () {
-              recoverC.loadCuestionariosConPuntaje(Get.arguments['Alumno'] as int, recover.materias[index].idMateria as int);
+              recoverC.loadCuestionariosConPuntaje(Get.arguments['Alumno'] as int, recover.materiasReto[index].idMateria as int);
               //recoverC.loadCuestionariosResueltos(Get.arguments["Alumno"]);
               Get.off(SplashPageGet(), arguments: {"Page":"ChooseCuestionaryRecover", "Alumno": Get.arguments["Alumno"]});
             },

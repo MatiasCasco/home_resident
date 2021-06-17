@@ -12,6 +12,7 @@ class Cuestionary extends StatelessWidget {
   Widget build(BuildContext context) {
     bool valor = false;
     CuestionaryController _controller = Get.put(CuestionaryController());
+    _controller.alumno =  _alumno;
     Future<bool> _onBackPressed(){
       valor = _controller.valor;
       if(valor==true) {
@@ -57,7 +58,7 @@ class Cuestionary extends StatelessWidget {
                     print("Correcto ya puede insertar datos");
                     //connectInternet('Almacenando Test','Inserccion exitosa');
                     print("skip este es el id: "+_alumno.toString());
-                    _controller.alumno =  _alumno;
+                    //_controller.alumno =  _alumno;
                     _controller.checkAns();
                     _controller.cargaBD();
                   }/*

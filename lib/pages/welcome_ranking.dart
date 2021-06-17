@@ -15,7 +15,7 @@ class WelcomeRanking extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> items = List.generate(
-        recover.materias.length,
+        recover.materiasReto.length,
             (index) => Container(
           padding: EdgeInsets.all(20),
           margin: EdgeInsets.all(20),
@@ -26,13 +26,13 @@ class WelcomeRanking extends StatelessWidget {
           ),
           //color: Colors.amber,
           child: TextButton(
-            child: Text(recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white),),
+            child: Text(recover.materiasReto[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white),),
             onPressed: () {
               /* Asi seguir los comentarios para armar ranking con profesor en su propia app
               recoverC.loadRankingGlobal(nameCurso, recover.materias[index].nameMateria);
               Get.to(SplashPageGet(), arguments: {"Page":"RankingGlobal","Curso":nameCurso,"Materia":recover.materias[index].nameMateria});
               */
-              Get.to(SplashPageGet(), arguments: {"Page":"Rankingnes","Curso":nameCurso,"Materia":recover.materias[index].nameMateria});
+              Get.to(SplashPageGet(), arguments: {"Page":"Rankingnes","Curso":nameCurso,"Materia":recover.materiasReto[index].nameMateria});
             },
 
           ),
