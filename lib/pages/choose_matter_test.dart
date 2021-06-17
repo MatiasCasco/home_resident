@@ -11,7 +11,7 @@ class ChooseMatterTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> items = List.generate(
-        recuperar.materias.length,
+        recuperar.materiasTest.length,
         (index) => Container(
               padding: EdgeInsets.all(20),
               margin: EdgeInsets.all(20),
@@ -22,13 +22,13 @@ class ChooseMatterTest extends StatelessWidget {
               ),
               child: TextButton(
                 child: Text(
-                  recuperar.materias[index].nameMateria,
+                  recuperar.materiasTest[index].nameMateria,
                   style: TextStyle(fontSize: 40, color: Colors.white),
                 ),
                 onPressed: () {
-                  print(recuperar.materias[index].idMateria.toString() + recuperar.materias[index].nameMateria);
+                  print(recuperar.materiasTest[index].idMateria.toString() + recuperar.materiasTest[index].nameMateria);
                   print("id alumno en welcome id: ${Get.arguments["Alumno"] as int} y el Curso: ${Get.arguments["Curso"]}");
-                  recover.loadCuestionariosOFMateriaAndCurso(Get.arguments["Curso"] as String, recuperar.materias[index].nameMateria);
+                  recover.loadCuestionariosOFMateriaAndCurso(Get.arguments["Curso"] as String, recuperar.materiasTest[index].nameMateria);
                   recover.loadCuestionariosResueltos(Get.arguments["Alumno"] as int);
                   Get.off(SplashPageGet(), arguments: {"Page":"ChooseCuestionary", "Alumno": Get.arguments["Alumno"]});
                   //recuperar.load(recuperar.materias[index].nameMateria, Get.arguments["Curso"]);

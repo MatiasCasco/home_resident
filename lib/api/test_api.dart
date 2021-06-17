@@ -10,7 +10,9 @@ class TestApi {
           api + "/testApi/test/${Cuestionario}");
       print(response.body);
       if (response.statusCode == 200) {
-        final parsed = jsonDecode(response.body);
+        String body = utf8.decode(response.bodyBytes);
+        //String body = Utf8Decoder().convert(response.bodyBytes);
+        final parsed = jsonDecode(body);
         print("Obtener la estructura de test");
         print(parsed.runtimeType);
         return parsed;

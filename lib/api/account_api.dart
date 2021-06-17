@@ -161,6 +161,8 @@ class AccountApi {
         data1['alumno'] = parsed['idP'];
         data1['curso'] = parsed['nombreCurso'];
         data1['rol'] = parsed['rol'];
+        data1['email'] = parsed['email'];
+        data1['name'] = parsed['name'];
         return data1;
       }else{
         return null;

@@ -10,7 +10,9 @@ class CuestionarioApi {
           api + "/cuestionarioApi/curso/${Curso}/materia/${Materia}");
       print(response.body);
       if (response.statusCode == 200) {
-        final parsed = jsonDecode(response.body);
+        String body = utf8.decode(response.bodyBytes);
+        //String body = Utf8Decoder().convert(response.bodyBytes);
+        final parsed = jsonDecode(body);
         print("Obtener la lista de cuestionarios");
         print(parsed.runtimeType);
         return parsed;

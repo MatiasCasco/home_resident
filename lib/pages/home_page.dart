@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   RecoverQuestionsList recover = Get.put(RecoverQuestionsList());
   int _currentPage = 0;
   int idA;
-  String Curso;
+  String Curso, email, name;
   @override
   void initState() {
     /*idA = widget.id;
@@ -48,21 +48,27 @@ class _HomePageState extends State<HomePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     idA =  prefs.getInt("Alumno");
     Curso = prefs.getString("Curso");
-    recover.loadMateria(Curso);
+    email = prefs.getString("email");
+    name = prefs.getString("name");
+    recover.loadMateriaReto(Curso);
   }
 
   @override
   Widget build(BuildContext context) {
     int id;
-    String curso;
+    String curso, email, name;
     Map<String, dynamic> args = ModalRoute.of(context).settings.arguments;
     if(!args.isEmpty) {
       id = args["alumno"] as int;
       curso = args["curso"].toString();
+      email = args["email"].toString();
+      name = email = args["name"].toString();
     } else {
       recuperar();
       id = idA;
       curso = Curso;
+      email = email;
+      name = name;
     }
 
     /*int id = idA;
@@ -74,12 +80,14 @@ class _HomePageState extends State<HomePage> {
     }*/
     print("Este es la prueba: $id");
     print("Este es el curso: $curso");
+    print("Este es el curso: $email");
+    print("Este es el curso: $name");
     final _menu =  [ // Lista precargada
       BottomMenuItem(iconPath: "assets/icons/smartphoneBlack.svg", label: "Reto", content: MenuTab(idAlumno: id, curso: curso,)),
       BottomMenuItem(iconPath: "assets/icons/examen.svg", label: "Test", content: HistorialTab(idAlumno: id,nameCurso: curso,)),
       BottomMenuItem(iconPath: "assets/icons/user.svg", label: "Ranking", content: UserTab(nameCurso: curso)),
       BottomMenuItem(iconPath: "assets/icons/history.svg", label: "Historial", content: HistorialTabD(idAlumno: id,nameCurso: curso,)),
-      BottomMenuItem(iconPath: "assets/icons/adjust.svg", label: "Ajuste", content: AjusteTab(idAlumno: id, curso: curso, rol: 3)),
+      BottomMenuItem(iconPath: "assets/icons/adjust.svg", label: "Ajuste", content: AjusteTab(idAlumno: id, curso: curso, rol: 3, email: email, name: name)),
     ];
     print('Identificador del alumno: '+ id.toString());
     return Scaffold(
@@ -92,8 +100,8 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(icon: Icon(Icons.send),
               onPressed: (){
-                final route = MaterialPageRoute(builder: (BuildContext _)=>Score());
-                Navigator.push(context, route);
+                //final route = MaterialPageRoute(builder: (BuildContext _)=>Score());
+                //Navigator.push(context, route);
               }),
           IconButton(icon: Icon(Icons.more_vert), onPressed: (){
             //Navigator.pushNamed(context, PostPage2.routeName);

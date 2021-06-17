@@ -51,7 +51,7 @@ class RecoverQuestionsList {
   Future<void> loadMateriaReto(String curso) async {
     print("Carga de list<Materia>");
     final _mat = await _retoAPI.getMateriasRetoD(curso);
-    _materias = _mat
+    _materiasReto = _mat
         .map(
           (materia) => Materia(
           idMateria: materia['idMateria'],
@@ -59,7 +59,7 @@ class RecoverQuestionsList {
           idCurso: materia['idCurso'],
           nameCurso: materia['nombreCurso']),
     ).toList();
-    print(_materias);
+    print(_materiasReto);
   }
   /********************************************************************************/
   List<Materia> _materiasTest = [];
@@ -68,7 +68,7 @@ class RecoverQuestionsList {
   Future<void> loadMateriaTest(String curso) async {
     print("Carga de list<Materia>");
     final _mat = await _retoAPI.getMateriasTest(curso);
-    _materias = _mat
+    _materiasTest = _mat
         .map(
           (materia) => Materia(
           idMateria: materia['idMateria'],
@@ -76,6 +76,6 @@ class RecoverQuestionsList {
           idCurso: materia['idCurso'],
           nameCurso: materia['nombreCurso']),
     ).toList();
-    print(_materias);
+    print(_materiasTest);
   }
 }

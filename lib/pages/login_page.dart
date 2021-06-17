@@ -274,13 +274,17 @@ class _LoginPageState extends State<LoginPage> {
         int idAlumno = _credencial.data["alumno"] as int;
         String curso = _credencial.data["curso"].toString();
         int rol = _credencial.data["rol"] as int;
+        String name = _credencial.data["name"].toString();
+        String email = _credencial.data["email"].toString();
         print("El id del alumno es $idAlumno y el curso es $curso");
         await prFr.setString("Curso", curso);
         await prFr.setInt("Alumno", idAlumno);
+        await prFr.setString("email", email);
+        await prFr.setString("name", name);
         if(rol == 4) {
           Navigator.pushReplacementNamed(context, UpdatePassword.routeName, arguments: {"id":idAlumno, "curso":curso,"rol":rol},);
         }else{
-          Navigator.pushReplacementNamed(context, HomePage.routeName, arguments: {"alumno": idAlumno,"curso": curso,});
+          Navigator.pushReplacementNamed(context, HomePage.routeName, arguments: {"alumno": idAlumno,"curso": curso, "email":email, "name":name});
         }
 
       }else{
@@ -356,7 +360,7 @@ class _LoginPageState extends State<LoginPage> {
                                         onFieldSubmitted: (String text){
                                           // _focusNodePassword.nextFocus();
                                         },
-                                        initialValue: 'ss02.@gmail.com',
+                                        //initialValue: 'ss02.@gmail.com',
                                         //initialValue: 'ss02.@gmail.com',
                                       ),
                                       SizedBox(height: size.height/44,),
@@ -375,7 +379,7 @@ class _LoginPageState extends State<LoginPage> {
                                         onFieldSubmitted: (String text){
                                           _submit();
                                         },
-                                        initialValue: '123456',
+                                        //initialValue: '123456',
                                       ),
                                       SizedBox(height:size.height/44),
                                       MyBtn(label: "Ingresar",fullWidth: true,onPressed: _submit,backgroundColor: Color(0xff304ffE),textColor: Colors.white,)

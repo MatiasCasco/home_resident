@@ -39,7 +39,7 @@ class WelcomeChallenges extends StatelessWidget {
                         Navigator.push(context, route);
                       },*/
                       onTap: () {
-                        recover.loadMateria(curso);
+                        recover.loadMateriaReto(curso);
                         Get.to(SplashPageGet(), arguments: {"Page":"ChooseMatter", "Alumno": id, "Curso": curso});
                         //Get.to(ChosseMatter());
                        /*  Este es el que anda
