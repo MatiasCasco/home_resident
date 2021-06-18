@@ -52,6 +52,22 @@ class QuestionsController extends GetxController
     _curso = value;
   }
 
+  String _email;
+
+  String get email => this._email;
+
+  set email(String value) {
+    _email = value;
+  }
+
+  String _name;
+
+  String get name => this._name;
+
+  set name(String value) {
+    _name = value;
+  }
+
   String _materia;
 
   String get materia => this._materia;
@@ -169,7 +185,7 @@ class QuestionsController extends GetxController
       _playFile();
       Future.delayed(Duration(seconds: 5), () {
         _stopFile();
-        Get.off(HomePage(), arguments: {"alumno": alumno,"curso": curso,});
+        Get.off(HomePage(), arguments: {"alumno": alumno,"curso": curso,"email":email, "name":name});
       });
     }
   }

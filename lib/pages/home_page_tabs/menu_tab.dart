@@ -37,7 +37,7 @@ class _MenuTabState extends State<MenuTab> {
     recuperar();
     id= widget.idAlumno;
     Curso = widget.curso;
-    email = email;
-    name = name;
+    email = widget.email;
+    name = widget.name;
   }
 }

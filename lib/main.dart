@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget{
           }
         },
         child: GetMaterialApp(
+          debugShowCheckedModeBanner: false,
           home: SplashPage(),
           routes: {
             // 'homePage': (BuildContext context)=> HomePage(),
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget{
             SplashPage.routeName:(_)=> SplashPage(),
             //Score.routeName: (_)=> Score(),
           },
+          //debugShowCheckedModeBanner: false,
         )
     );
   }

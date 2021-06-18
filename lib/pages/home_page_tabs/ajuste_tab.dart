@@ -84,7 +84,7 @@ class _AjusteTabState extends State<AjusteTab> {
                 rightContent: Text(email, style: TextStyle(color: Colors.blueGrey),), /*SvgPicture.asset("assets/icons/downArrow.svg"),*/
                 label:"Email",
                 //onPressed: _confirm,
-                onPressed: _setEmail,
+                onPressed: (){},
               ),
               LeftRightIconButton(
                 leftIcon: "assets/icons/security.svg",
