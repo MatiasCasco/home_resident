@@ -67,6 +67,7 @@ class RecoverCuestionaryList {
         .map(
           (cuestionary) => Cuestionario(
               idCuestionario: cuestionary['idCuestionario'],
+              descripcion: cuestionary['descripcion'],
               puntos: cuestionary['puntos'],
               idCurso: cuestionary['idCurso'],
               idMateria: cuestionary['idMateria'],
@@ -89,6 +90,7 @@ class RecoverCuestionaryList {
         .map(
           (cuestionary) => Cuestionario(
           idCuestionario: cuestionary['idCuestionario'],
+          descripcion: cuestionary['descripcion'],
           puntos: cuestionary['puntos'],
           idCurso: cuestionary['idCurso'],
           idMateria: cuestionary['idMateria'],
@@ -166,6 +168,7 @@ class RecoverCuestionaryList {
         .map(
           (test) => Cuestionario(
           idCuestionario: test['idCuestionario'],
+          descripcion: test['descripcion'],
           idMateria: test['idMateria'],
           nameMateria: test['nombreMateria'],
           fechaCierre: test['fechaCierre'],

@@ -42,7 +42,8 @@ class ChooseCuestionary extends StatelessWidget {
                 Text(
                   "Cuestionario N°$index \n"
                   + recover.cuestionarios[index].nameMateria
-                  + "\n idC: ${recover.cuestionarios[index].idCuestionario}"
+                  //+ "\n idC: ${recover.cuestionarios[index].idCuestionario}"
+                  + "\n ${recover.cuestionarios[index].descripcion}"
                   , style: TextStyle(fontSize: 30, color: Colors.green),
                   //recover.materias[index].nameMateria, style: TextStyle(fontSize: 40, color: Colors.white38),
                 ),

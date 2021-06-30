@@ -30,6 +30,7 @@ class ChooseCuestionaryRecover extends StatelessWidget {
                 Text(
                   "Cuestionario N°${(index+1)} \n" + recover.listTestConPuntaje[index].nameMateria, style: TextStyle(fontSize: 30, color: Colors.teal),
                 ),
+                Text("${recover.listTestConPuntaje[index].descripcion}", style: TextStyle(fontSize: 26, color: Colors.green),),
                 Text("Puntos: ${recover.listTestConPuntaje[index].puntos}", style: TextStyle(fontSize: 26, color: Colors.green),),
                 Text(
                   "Fecha Apertura: ${recover.listTestConPuntaje[index].fechaApertura}\n" + "Fecha Cierre: ${recover.listTestConPuntaje[index].fechaCierre}" , style: TextStyle(fontSize: 18, color: Colors.cyanAccent),

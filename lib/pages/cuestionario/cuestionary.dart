@@ -11,6 +11,7 @@ class Cuestionary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool valor = false;
+    bool insertar = false;
     CuestionaryController _controller = Get.put(CuestionaryController());
     _controller.alumno =  _alumno;
     Future<bool> _onBackPressed(){
@@ -48,24 +49,31 @@ class Cuestionary extends StatelessWidget {
           actions: [
             TextButton(
                 onPressed: () async {
-                  bool internet = true;
-                  ConnectionStatus();
-                  await Future.delayed(Duration(seconds: 3));
-                  print('Connect Internet ${connect.isOnline}');
-                  internet = connect.isOnline.value;
-                  !internet?connectInternet('Conexion no disponible','No salga del test espera a que se restablesca conexion'):connectInternet('Almacenando Test','Inserccion exitosa');
-                  if(internet){
-                    print("Correcto ya puede insertar datos");
-                    //connectInternet('Almacenando Test','Inserccion exitosa');
-                    print("skip este es el id: "+_alumno.toString());
-                    //_controller.alumno =  _alumno;
+                    if(insertar == false) {
+                      bool internet = true;
+                      ConnectionStatus();
+                      await Future.delayed(Duration(seconds: 3));
+                      print('Connect Internet ${connect.isOnline}');
+                      internet = connect.isOnline.value;
+                      !internet
+                        ? connectInternet('Conexion no disponible',
+                        'No salga del test espera a que se restablesca conexion')
+                        : connectInternet(
+                        'Almacenando Test', 'Inserccion exitosa');
+                      if (internet) {
+                        print("Correcto ya puede insertar datos");
+                        //connectInternet('Almacenando Test','Inserccion exitosa');
+                        print("skip este es el id: " + _alumno.toString());
+                        //_controller.alumno =  _alumno;
+                        _controller.checkAns();
+                        _controller.cargaBD();
+                      } /*
+                    print("skip este es el id: "+Get.arguments["Alumno"].toString());
+                    _controller.alumno =  Get.arguments["Alumno"];
                     _controller.checkAns();
-                    _controller.cargaBD();
-                  }/*
-                  print("skip este es el id: "+Get.arguments["Alumno"].toString());
-                  _controller.alumno =  Get.arguments["Alumno"];
-                  _controller.checkAns();
-                  _controller.cargaBD();*/
+                    _controller.cargaBD();*/
+                      insertar = true;
+                  }
                 },
                 child: IconButton(icon: Icon(Icons.send, color: Colors.white,)),),
           ],

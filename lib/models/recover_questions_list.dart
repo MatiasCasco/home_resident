@@ -12,7 +12,7 @@ class RecoverQuestionsList {
 
   Future<void> load(String materia, String curso) async {
     print("Carga de list<Question>");
-    final _reto = await _retoAPI.getReto("6", "4", materia, curso);
+    final _reto = await _retoAPI.getReto("10", "4", materia, curso);
     _questions = _reto
         .map(
           (question) => Question(

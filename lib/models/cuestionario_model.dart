@@ -1,9 +1,10 @@
 class Cuestionario{
   final int idCuestionario, puntos, idCurso, idMateria;
-  final String nameMateria, nameCurso, fechaApertura, fechaCierre, tiempoLimite;
+  final String descripcion, nameMateria, nameCurso, fechaApertura, fechaCierre, tiempoLimite;
 
   Cuestionario({
       this.idCuestionario,
+      this.descripcion,
       this.puntos,
       this.idCurso,
       this.idMateria,
@@ -16,6 +17,6 @@ class Cuestionario{
 
   @override
   String toString() {
-    return 'Cuestionario{idCuestionario: $idCuestionario, puntos: $puntos, idCurso: $idCurso, idMateria: $idMateria, nameMateria: $nameMateria, nameCurso: $nameCurso, fechaApertura: $fechaApertura, fechaCierre: $fechaCierre, tiempoLimite: $tiempoLimite}';
+    return 'Cuestionario{idCuestionario: $idCuestionario, descripcion: $descripcion, puntos: $puntos, idCurso: $idCurso, idMateria: $idMateria, nameMateria: $nameMateria, nameCurso: $nameCurso, fechaApertura: $fechaApertura, fechaCierre: $fechaCierre, tiempoLimite: $tiempoLimite}';
   }
 }

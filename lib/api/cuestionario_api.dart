@@ -72,6 +72,8 @@ class CuestionarioApi {
         final parsed = jsonDecode(response.body);
         print("Obtener la lista de cuestionarios resueltos por el alumno");
         print(parsed.runtimeType);
+        print("asi");
+        print(parsed);
         return parsed;
       }
       print("error ${response.statusCode}");
