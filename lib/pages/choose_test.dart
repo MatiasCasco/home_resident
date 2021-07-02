@@ -34,7 +34,7 @@ class ChooseTest extends StatelessWidget {
                       Text('Cuestionario N°'+ (index+1).toString(),
                         style: style1,
                       ),
-                      Text(recoverC.cuestionariosOFMateria[index].descripcion,
+                      Text(recoverC.cuestionariosOFMateria[index].descripcion.replaceAll("\"", ""),
                         style: style2,
                       ),
                       Text('Fecha de inicio: ' + recoverC.cuestionariosOFMateria[index].fechaApertura,

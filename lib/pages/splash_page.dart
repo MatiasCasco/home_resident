@@ -22,7 +22,7 @@ class _SplashPageState extends State<SplashPage> with AfterLayoutMixin {
 
   @override
   void afterFirstLayout(BuildContext context) {
-    Future.delayed(Duration(seconds: 3)).then((_){
+    Future.delayed(Duration(seconds: 2)).then((_){ //3 tenia
       this._checkLogin();
     });
   }

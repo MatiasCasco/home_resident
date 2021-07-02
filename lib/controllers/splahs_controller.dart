@@ -21,7 +21,7 @@ class SplashController extends GetxController {
     super.onReady();
     //final  argument = Get.arguments.toString();
     if(Get.arguments["Page"] == "Quiz"){
-      Future.delayed(Duration(seconds:6),(){
+      Future.delayed(Duration(seconds:4),(){ // baje a 4 de 6
         Get.off(Quiz(), arguments: {"Alumno": Get.arguments["Alumno"] as int, "Materia":Get.arguments["Materia"],"Curso":Get.arguments["Curso"], "email":Get.arguments["email"], "name":Get.arguments["name"],});
       });
     }
