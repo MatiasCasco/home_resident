@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:home_resident/controllers/cuestionary_controller.dart';
 import 'package:home_resident/models/cuestionario_model.dart';
+import 'package:home_resident/models/puntaje_cuestionario_model.dart';
 import 'package:home_resident/models/recover_cuestionary_list.dart';
 import 'package:home_resident/utils/dialogs.dart';
 import 'splash_page_get.dart';
 
 class ChooseCuestionary extends StatelessWidget {
   RecoverCuestionaryList recover = Get.put(RecoverCuestionaryList());
-  CuestionaryController controller = Get.put(CuestionaryController());
+  //CuestionaryController controller = Get.put(CuestionaryController());
   int id;
   ChooseCuestionary({this.id});
 
@@ -40,7 +41,7 @@ class ChooseCuestionary extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  "Cuestionario N°$index \n"
+                  "Cuestionario N°${index + 1} \n"
                   + recover.cuestionarios[index].nameMateria
                   //+ "\n idC: ${recover.cuestionarios[index].idCuestionario}"
                   + "\n ${recover.cuestionarios[index].descripcion.replaceAll("\"", "")}"
@@ -57,17 +58,17 @@ class ChooseCuestionary extends StatelessWidget {
             ),
             onPressed: () {
               //controller.alumno = id;
-              print('Este es el idAlumno en choose_cuestionary'+controller.alumno.toString());
-              if(controller.findCuestionary(id, recover.cuestionarios[index].idCuestionario)){
+              //print('Este es el idAlumno en choose_cuestionary'+controller.alumno.toString());
+              if(findCuestionary(id, recover.cuestionarios[index].idCuestionario)){
                 noficacionResuelto();
               } else {
-                if (!controller.fechaEnTiempoCorrecto(
+                if (!fechaEnTiempoCorrecto(
                     recover.cuestionarios[index])) {
                   noficacion(recover.cuestionarios[index].fechaApertura,
                       recover.cuestionarios[index].fechaCierre);
                 } else {
                   recover.loadTest(recover.cuestionarios[index].idCuestionario);
-                  Get.off(SplashPageGet(), arguments: {"Page":"Cuestionary","Cuestionario":recover.cuestionarios[index], "Alumno": id, "Puntos": recover.cuestionarios[index].puntos});
+                  Get.off(SplashPageGet(), arguments: {"Page":"Cuestionary","Cuestionario":recover.cuestionarios[index], "Alumno": id, "Puntos": recover.cuestionarios[index].puntos, "Tiempo": recover.cuestionarios[index].tiempoLimite});
                 }
               }
               //recover.loadTest(recover.cuestionarios[index].idCuestionario);
@@ -101,5 +102,33 @@ class ChooseCuestionary extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  bool fechaEnTiempoCorrecto(Cuestionario _test){
+    bool value =  true;
+    String cadena = "El test se encuentra disponible";
+    int x = 0, y = 0;
+    var now = new DateTime.now();
+    x = now.compareTo( DateTime.parse(_test.fechaApertura));
+    y = now.compareTo( DateTime.parse(_test.fechaCierre));
+    if(x < 0 || y > 0) {
+      cadena = "El test no se encuentra disponible";
+      value = false;
+    }
+    return value;
+  }
+
+  bool findCuestionary(int idAlumno, int test){
+    bool value = false;
+    List<PuntajeCuestionario> _cuestionariosResueltos = recover.cuestionariosResueltos;
+    if(_cuestionariosResueltos.isEmpty){
+      value = false;
+    }
+    for(PuntajeCuestionario item in _cuestionariosResueltos){
+      if(item.idAlumno == idAlumno && item.idCuestionario == test){
+        value = true;
+      }
+    }
+    return value;
   }
 }

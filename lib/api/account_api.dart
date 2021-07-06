@@ -210,7 +210,9 @@ class AccountApi {
       final http.Response response = await http.get("https://reqres.in/api/users?page=$page&delay=3");
       print(response.body);
       if(response.statusCode==200) {
-        final parsed = jsonDecode(response.body);
+        String body = utf8.decode(response.bodyBytes);
+        //String body = Utf8Decoder().convert(response.bodyBytes);
+        final parsed = jsonDecode(body);
         print("getUsers ok");
         print(parsed['data'].runtimeType); //averigua que tipo de dato retorna
         return parsed['data'];

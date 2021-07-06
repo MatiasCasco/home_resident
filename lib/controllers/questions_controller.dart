@@ -67,6 +67,13 @@ class QuestionsController extends GetxController
   set name(String value) {
     _name = value;
   }
+  bool _response = false;
+
+  bool get response => this._response;
+
+  set response(bool value){
+    _response = value;
+  }
 
   String _materia;
 
@@ -134,7 +141,7 @@ class QuestionsController extends GetxController
 
   void checkAns(Question question, int selectedIndex) {
     // porque una vez que el usuario presione cualquier opción, se ejecutará
-
+    _response = true;
     _isAnswered = true;
     _correctAns = question.answer;
     _selectedAns = selectedIndex;
@@ -168,6 +175,7 @@ class QuestionsController extends GetxController
   void nextQuestion() {
     if (_questionNumber.value != recover.questions.length) {
     //if (_questionNumber.value != _questions.length) {
+      _response = false;
       _isAnswered = false;
       _pageController.nextPage(
           duration: Duration(microseconds: 250), curve: Curves.ease);

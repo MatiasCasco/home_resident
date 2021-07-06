@@ -49,17 +49,20 @@ class Cuestionary extends StatelessWidget {
           actions: [
             TextButton(
                 onPressed: () async {
+                  bool internet = true;
+                  ConnectionStatus();
+                  await Future.delayed(Duration(seconds: 5));
+                  print('Connect Internet ${connect.isOnline}');
+                  ConnectionStatus();
+                  internet = connect.isOnline.value;
                     if(insertar == false) {
-                      bool internet = true;
-                      ConnectionStatus();
-                      await Future.delayed(Duration(seconds: 3));
-                      print('Connect Internet ${connect.isOnline}');
-                      internet = connect.isOnline.value;
+                      insertar = true;
                       !internet
                         ? connectInternet('Conexion no disponible',
                         'No salga del test espera a que se restablesca conexion')
                         : connectInternet(
                         'Almacenando Test', 'Inserccion exitosa');
+                      !internet? insertar = false: null;
                       if (internet) {
                         print("Correcto ya puede insertar datos");
                         //connectInternet('Almacenando Test','Inserccion exitosa');
@@ -67,12 +70,12 @@ class Cuestionary extends StatelessWidget {
                         //_controller.alumno =  _alumno;
                         _controller.checkAns();
                         _controller.cargaBD();
+                        _controller.viewTemporizador = false;
                       } /*
                     print("skip este es el id: "+Get.arguments["Alumno"].toString());
                     _controller.alumno =  Get.arguments["Alumno"];
                     _controller.checkAns();
                     _controller.cargaBD();*/
-                      insertar = true;
                   }
                 },
                 child: IconButton(icon: Icon(Icons.send, color: Colors.white,)),),

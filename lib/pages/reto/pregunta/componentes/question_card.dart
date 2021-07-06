@@ -55,7 +55,7 @@ class QuestionCard extends StatelessWidget {
                       (index) => Option(
                     index: index,
                     text: question.options[index].replaceAll("\"", ""),
-                    press: ()=>_controller.checkAns(question, index),
+                    press: ()=> !_controller.response?_controller.checkAns(question, index):(){},
                   ),
                 ),
               ],

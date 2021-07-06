@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:home_resident/controllers/cuestionary_controller.dart';
+import 'package:slide_countdown_clock/slide_countdown_clock.dart';
 //import 'package:quiz_app/controllers/question_controller.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 import 'package:home_resident/utils/constants.dart';
@@ -49,13 +50,16 @@ class ProgressBarC extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      //
+                      controller.viewTemporizador?
+                      SlideCountdownClock(duration: Duration(seconds: controller.Tiempo()), separator: ':', textStyle: TextStyle(color: Colors.white, fontSize: 20)):
+                      Text("00 : 00 : 00",style: TextStyle(color: Colors.white, fontSize: 20),),
+                      /*
                       Text(
                           "${controller.countH} hr "
                           +"${controller.countM} min "
                           +"${controller.countS} sec",
                           style: TextStyle(color: Colors.purpleAccent),
-                      ),
+                      ),*/
                       WebsafeSvg.asset("assets/icons/clock.svg"),
                     ],
                   ),

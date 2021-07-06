@@ -31,7 +31,9 @@ class CuestionarioApi {
           api + "/cuestionarioApi/cursoName/${nameCurso}/materiaName/${nameMateria}");
       print(response.body);
       if (response.statusCode == 200) {
-        final parsed = jsonDecode(response.body);
+        String body = utf8.decode(response.bodyBytes);
+        //String body = Utf8Decoder().convert(response.bodyBytes);
+        final parsed = jsonDecode(body);
         print("Obtener la lista de cuestionarios");
         print(parsed.runtimeType);
         return parsed;
@@ -50,7 +52,9 @@ class CuestionarioApi {
           api + "/puntajeApi/rankingGlobal/curso/${nameCurso}/materia/${nameMateria}");
       print(response.body);
       if (response.statusCode == 200) {
-        final parsed = jsonDecode(response.body);
+        String body = utf8.decode(response.bodyBytes);
+        //String body = Utf8Decoder().convert(response.bodyBytes);
+        final parsed = jsonDecode(body);
         print("Obtener la lista de rankin global");
         print(parsed.runtimeType);
         return parsed;
@@ -69,7 +73,9 @@ class CuestionarioApi {
           api + "/cuestionarioApi/alumno/${alumno}/materia/${materia}");
       print(response.body);
       if (response.statusCode == 200) {
-        final parsed = jsonDecode(response.body);
+        String body = utf8.decode(response.bodyBytes);
+        //String body = Utf8Decoder().convert(response.bodyBytes);
+        final parsed = jsonDecode(body);
         print("Obtener la lista de cuestionarios resueltos por el alumno");
         print(parsed.runtimeType);
         print("asi");
@@ -90,7 +96,9 @@ class CuestionarioApi {
           api + "/puntajeApi/resueltos/${idAlumno}");
       print(response.body);
       if (response.statusCode == 200) {
-        final parsed = jsonDecode(response.body);
+        String body = utf8.decode(response.bodyBytes);
+        //String body = Utf8Decoder().convert(response.bodyBytes);
+        final parsed = jsonDecode(body);
         print("Obtener la lista de cuestionarios");
         print(parsed.runtimeType);
         return parsed;
@@ -109,7 +117,9 @@ class CuestionarioApi {
           api + "/puntajeApi/ranking/${idCuestionario}");
       print(response.body);
       if (response.statusCode == 200) {
-        final parsed = jsonDecode(response.body);
+        String body = utf8.decode(response.bodyBytes);
+        //String body = Utf8Decoder().convert(response.bodyBytes);
+        final parsed = jsonDecode(body);
         print("Obtener la lista de cuestionarios");
         print(parsed.runtimeType);
         return parsed;

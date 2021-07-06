@@ -32,7 +32,7 @@ class Quiz extends StatelessWidget {
           child: SvgPicture.asset("assets/icons/back.svg", width: 30,),),
         elevation: 0,
         actions: [
-          TextButton(onPressed: _controller.nextQuestion, child: Text("Avanzar", style: TextStyle(color: Colors.black, fontSize: 25),),),
+          TextButton(onPressed: _controller.nextQuestion, child: Text("Avanzar", style: TextStyle(color: Colors.white, fontSize: 25),),),
         ],
       ),
       body: Body(),

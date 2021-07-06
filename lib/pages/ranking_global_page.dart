@@ -27,7 +27,7 @@ class RankingGlobalM extends StatelessWidget {
                 return ListTile(
                   leading: Icon(Icons.account_circle_rounded, size: 50, color:  Colors.lightBlue,),
                   title: Text(recover.rankingGlobal[index].nombre + ' ' + recover.rankingGlobal[index].apellido, style: TextStyle(fontSize: 20, color: Colors.purple),),
-                  subtitle: Text("Porcentaje: "+(recover.rankingGlobal[index].puntosObtenidos*100/recover.rankingGlobal[index].puntos).toString() + "%", style: TextStyle(fontSize: 15, color: Colors.white)),
+                  subtitle: Text("Porcentaje: "+(recover.rankingGlobal[index].puntosObtenidos*100/recover.rankingGlobal[index].puntos).toStringAsFixed(2) + "%", style: TextStyle(fontSize: 15, color: Colors.white)),
                   trailing: IconsScore(porcentaje: recover.rankingGlobal[index].puntosObtenidos*100/recover.rankingGlobal[index].puntos),
                   onTap: (){
                     /* Seguir esta estructura para ranking profesor

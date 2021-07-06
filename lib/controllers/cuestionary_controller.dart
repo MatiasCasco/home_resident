@@ -26,7 +26,7 @@ class CuestionaryController extends GetxController
   PageController _pageController;
   PageController get pageController => this._pageController;
 
- /* List<QuestionCuestionary> _questions = sample_data
+  /* List<QuestionCuestionary> _questions = sample_data
       .map(
         (question) => QuestionCuestionary(
         id: question['id'],
@@ -50,6 +50,12 @@ class CuestionaryController extends GetxController
 
   set alumno(int value) {
     _alumno = value;
+  }
+  bool _viewTemporizador = true;
+  bool get viewTemporizador => this._viewTemporizador;
+
+  set viewTemporizador(bool value) {
+    _viewTemporizador = value;
   }
   RecoverCuestionaryList recover = Get.put(RecoverCuestionaryList());
 
@@ -90,10 +96,11 @@ class CuestionaryController extends GetxController
     _cuestionario = Get.arguments["Cuestionario"] as Cuestionario;
     print(cuestionario.toString());
     _animationController =
-        AnimationController(duration: Duration(seconds: 60), vsync: this);
+        AnimationController(duration: Duration(seconds: Tiempo()), vsync: this);
     _animation = Tween<double>(begin: 0, end: 1).animate(_animationController)
       ..addListener(() {
-        if ((_animation.value*60).round() > countS) {
+        _animation.value;
+        /*if ((_animation.value*60).round() > countS) {
           count++;
           countS++;
           if (countS == 60) {
@@ -111,23 +118,19 @@ class CuestionaryController extends GetxController
           }*/
           if (Tiempo() == count){
             _animationController.stop();
-            checkAns();
-            cargaBD();
+            //checkAns();
+            //cargaBD();
           }
-
           update();
-
-      }
+      }*/
         update();
       });
-
 
     // start our animation
     _animationController.forward().whenComplete(_complete);
     _pageController = PageController();
   }
-
-   // called just before the Controller is deleted from memory
+  // called just before the Controller is deleted from memory
   @override
   void onClose() {
     super.onClose();
@@ -180,7 +183,7 @@ class CuestionaryController extends GetxController
     }
     update();
   }
-  int Tiempo(){
+  int Tiempo() {
     hora = cuestionario.tiempoLimite.split('-');
     tiempo = (int.parse(hora[0])*3600/1)+(int.parse(hora[1])*60/1)+int.parse(hora[2]);
     return tiempo.round();
@@ -211,34 +214,6 @@ class CuestionaryController extends GetxController
 
   void updateTheQnNum(int index) {
     _questionNumber.value = index + 1;
-  }
-
-  bool fechaEnTiempoCorrecto(Cuestionario _test){
-    bool value =  true;
-    String cadena = "El test se encuentra disponible";
-    int x = 0, y = 0;
-    var now = new DateTime.now();
-    x = now.compareTo( DateTime.parse(_test.fechaApertura));
-    y = now.compareTo( DateTime.parse(_test.fechaCierre));
-    if(x < 0 || y > 0) {
-      cadena = "El test no se encuentra disponible";
-      value = false;
-    }
-    return value;
-  }
-
-  bool findCuestionary(int idAlumno, int test){
-    bool value = false;
-    List<PuntajeCuestionario> _cuestionariosResueltos = recover.cuestionariosResueltos;
-    if(_cuestionariosResueltos.isEmpty){
-      value = false;
-    }
-    for(PuntajeCuestionario item in _cuestionariosResueltos){
-      if(item.idAlumno == idAlumno && item.idCuestionario == test){
-        value = true;
-      }
-    }
-    return value;
   }
 
   void _complete(){
