@@ -33,7 +33,7 @@ class AccountApi {
     SharedPreferences prFr =await SharedPreferences.getInstance();///guara waslogin en memeoria
 
     // Uri uri =Uri.http("192.168.43.116:8084/proyectoapiMySql/rest/personapi/log");
-    Uri uri=new Uri(scheme: 'http',host: '192.168.43.116',path: 'proyectoapiMySql/rest/personapi/log',port: 8084);//funciona
+    Uri uri=new Uri(scheme: 'http',host: '192.168.0.3',path: 'proyectoapiMySql/rest/personapi/log',port: 8084);//funciona
     try{
       final http.Response response= await http.post(
           uri,
@@ -73,7 +73,7 @@ class AccountApi {
   }
 
   Future<Map<String, dynamic>> dataUser(String email, String password) async {
-    Uri uri=new Uri(scheme: 'http',host: '192.168.43.116', path: 'proyectoapiMySql/rest/personapi/log', port: 8084);//funciona
+    Uri uri=new Uri(scheme: 'http',host: '192.168.0.3', path: 'proyectoapiMySql/rest/personapi/log', port: 8084);//funciona
     try{
       final http.Response response= await http.post(
           uri,
@@ -105,7 +105,7 @@ class AccountApi {
   }
 
   Future<Map<String, dynamic>> updatePassword(int id , String passwordOld, String passwordNew) async {
-    Uri uri=new Uri(scheme: 'http',host: '192.168.43.116', path: 'proyectoapiMySql/rest/personapi/password', port: 8084);//funciona
+    Uri uri=new Uri(scheme: 'http',host: '192.168.0.3', path: 'proyectoapiMySql/rest/personapi/password', port: 8084);//funciona
     try{
       final http.Response response= await http.post(
           uri,

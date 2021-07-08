@@ -25,10 +25,10 @@ class ChooseTest extends StatelessWidget {
               child: TextButton(
                 child: Column(
                     children: [
-                      Text('Curso: '+ Get.arguments["Curso"].toString(),
+                      Text('Curso: '+ Get.arguments["Curso"].replaceAll("\"", "").toString(),
                         style: style1,
                       ),
-                      Text('Materia: '+ recoverC.cuestionariosOFMateria[index].nameMateria,
+                      Text('Materia: '+ recoverC.cuestionariosOFMateria[index].nameMateria.replaceAll("\"", ""),
                         style: style1,
                       ),
                       Text('Cuestionario N°'+ (index+1).toString(),

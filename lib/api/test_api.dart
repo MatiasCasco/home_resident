@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http; // Alias
 
 class TestApi {
-  String api = "http://192.168.43.116:8084/homeApi/rest";
+  String api = "http://192.168.0.3:8084/homeApi/rest";
 
   Future<List<dynamic>> getTest(int Cuestionario) async {
     try {

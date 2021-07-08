@@ -28,7 +28,7 @@ class ChooseCuestionaryRecover extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  "Cuestionario N°${(index+1)} \n" + recover.listTestConPuntaje[index].nameMateria, style: TextStyle(fontSize: 30, color: Colors.teal),
+                  "Cuestionario N°${(index+1)} \n" + recover.listTestConPuntaje[index].nameMateria.replaceAll("\"", ""), style: TextStyle(fontSize: 30, color: Colors.teal),
                 ),
                 Text("${recover.listTestConPuntaje[index].descripcion.replaceAll("\"", "")}", style: TextStyle(fontSize: 26, color: Colors.green),),
                 Text("Puntos: ${recover.listTestConPuntaje[index].puntos}", style: TextStyle(fontSize: 26, color: Colors.green),),

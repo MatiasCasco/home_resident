@@ -42,7 +42,7 @@ class ChooseCuestionary extends StatelessWidget {
               children: [
                 Text(
                   "Cuestionario N°${index + 1} \n"
-                  + recover.cuestionarios[index].nameMateria
+                  + recover.cuestionarios[index].nameMateria.replaceAll("\"", "")
                   //+ "\n idC: ${recover.cuestionarios[index].idCuestionario}"
                   + "\n ${recover.cuestionarios[index].descripcion.replaceAll("\"", "")}"
                   , style: TextStyle(fontSize: 30, color: Colors.green),
